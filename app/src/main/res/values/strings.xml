@@ -5,15 +5,20 @@
     <!-- LoginActivity -->
     <string name="welcome_text">Bienvenido</string>
     <string name="image_descrition">Logo de Lircay Market</string>
-    <string name="username_text">Nombre de Usuario</string>
+    <string name="email_text">Correo</string>
     <string name="password_text">Contraseña</string>
     <string name="login_buttom_text">Ingresar</string>
     <string name="without_account_text">¿No tienes una cuenta?</string>
     <string name="register_buttom_text">Registrarse</string>
 
     <!-- RegisterActivity -->
+    <string name="username_text">Nombre</string>
     <string name="create_account_text">Registrate</string>
     <string name="repeat_password_text">Repita la contraseña</string>
     <string name="create_account_buttom_text">Crear cuenta</string>
+    <string name="empty_username_error">No existe un nombre</string>
+    <string name="empty_email_error">No existe un correo</string>
+    <string name="empty_password_error">No existe una contraseña</string>
+    <string name="repeat_password_error">Las constraseñas no coinciden</string>
 
 </resources>
