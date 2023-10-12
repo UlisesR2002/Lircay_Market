@@ -6,18 +6,22 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.lircaymarket.entity.Pantry
+import com.example.lircaymarket.entity.Product
+import com.example.lircaymarket.entity.Shoppinglist
 import com.example.lircaymarket.entity.User
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var user: User
+    private lateinit var pantry: Pantry
+    private lateinit var shoppinglist: Shoppinglist
     private lateinit var textwelcome : TextView
     private lateinit var  bienvenida : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.optioncard_container)
-
 
         user = intent.getParcelableExtra<User>("users")!!
 
@@ -43,6 +47,33 @@ class MainActivity : AppCompatActivity() {
         optioncard2View.findViewById<Button>(R.id.cardButtonNavigate).setText(R.string.optioncard2_button_text)
         optioncard3View.findViewById<Button>(R.id.cardButtonNavigate).setText(R.string.optioncard3_button_text)
 
+        pantry = Pantry(user.pantryid, arrayListOf<Product>())
+        shoppinglist = Shoppinglist(user.shoppinglistid, arrayListOf<Product>(),0)
+
+        if (pantry.pantryid == 1 && pantry.products!!.isEmpty())
+        {
+            pantry.products?.add(
+                Product(
+                    pantry.products!!.size + 1,
+                    "Ravioli carne",
+                    1,
+                    "Paquete de 400 gramos de pasta rellena de marca carrozi",
+                    "Alimento",
+                    0
+                )
+            )
+
+            pantry.products?.add(
+                Product(
+                    pantry.products!!.size + 1,
+                    "Coca-cola",
+                    2,
+                    "Bebida de dos litros de la marca coca-cola",
+                    "Alimento",
+                    0
+                )
+            )
+        }
         optioncard1View.findViewById<TextView>(R.id.cardButtonNavigate).setOnClickListener{view ->
             goPantryApp(view)
         }
@@ -50,11 +81,14 @@ class MainActivity : AppCompatActivity() {
         optioncard2View.findViewById<TextView>(R.id.cardButtonNavigate).setOnClickListener{view ->
             goShoppinglistApp(view)
         }
+
+
     }
 
     fun goPantryApp(view: View){
         val intentPantryList = Intent(this, PantryListActivity::class.java)
-        intentPantryList.putExtra("users", user)
+        //intentPantryList.putExtra("users", user)
+        intentPantryList.putExtra("pantry", pantry)
         startActivity(intentPantryList)
     }
 

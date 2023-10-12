@@ -57,6 +57,7 @@ class ProductShoppingListAdapter(
         val categoryTextView = listItemView.findViewById<TextView>(R.id.textViewCategory)
         val descriptionTextView = listItemView.findViewById<TextView>(R.id.textViewDescription)
         val amountTextView = listItemView.findViewById<TextView>(R.id.textViewAmount)
+        val priceTextView = listItemView.findViewById<TextView>(R.id.textViewPrice)
 
 
         // Set the patient data in the TextViews
@@ -64,6 +65,7 @@ class ProductShoppingListAdapter(
         categoryTextView.text = "Categoria: " + product?.productcategory
         descriptionTextView.text = "Descripcion: " + product?.productdescription
         amountTextView.text = "Cantidad: " + product?.productamount.toString()
+        priceTextView.text = "Precio: $" + product?.productprice.toString()
 
         return listItemView
     }

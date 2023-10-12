@@ -29,13 +29,15 @@ class PantryListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pantry_list)
 
-        user = intent.getParcelableExtra<User>("users")!!
+        //user = intent.getParcelableExtra<User>("users")!!
 
-        pantry = Pantry(user.pantryid, arrayListOf<Product>())
+        //pantry = Pantry(user.pantryid, arrayListOf<Product>())
+
+        pantry = intent.getParcelableExtra<Pantry>("pantry")!!
 
         listViewProducts = findViewById(R.id.listViewProducts)
 
-        if(pantry.pantryid == 1) {
+        /*if(pantry.pantryid == 1) {
             pantry.products?.add(
                 Product(
                     pantry.products!!.size + 1,
@@ -57,7 +59,7 @@ class PantryListActivity : AppCompatActivity() {
                     0
                 )
             )
-        }
+        }*/
         adapter = ArrayAdapter<Product>(this, android.R.layout.simple_list_item_1, pantry.products!!)
 
         listViewProducts.adapter = adapter
@@ -77,7 +79,6 @@ class PantryListActivity : AppCompatActivity() {
         }
         listOption = !listOption
     }
-
     fun goCreateProduct(view: View)
     {
         val intent = Intent(this, ProductRegistratationActivity::class.java)
