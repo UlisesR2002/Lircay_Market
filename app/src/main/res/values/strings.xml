@@ -10,6 +10,7 @@
     <string name="login_buttom_text">Ingresar</string>
     <string name="without_account_text">¿No tienes una cuenta?</string>
     <string name="register_buttom_text">Registrarse</string>
+    <string name="user_not_found_error">No se ha encontrado un usuario</string>
 
     <!-- RegisterActivity -->
     <string name="username_text">Nombre</string>
@@ -20,5 +21,18 @@
     <string name="empty_email_error">No existe un correo</string>
     <string name="empty_password_error">No existe una contraseña</string>
     <string name="repeat_password_error">Las constraseñas no coinciden</string>
+    <string name="email_used_error">Este correo ya esta utilizado</string>
+
+    <!-- MainActivity -->
+    <string name="welcome_user_text">Bienvenido</string>
+    <string name="optioncard1_title_text">Lista de la despensa</string>
+    <string name="optioncard2_title_text">Lista de la compra</string>
+    <string name="optioncard3_title_text">Lugares de interes para comprar</string>
+    <string name="optioncard1_description_text">Accede a tu lista de despensa personal</string>
+    <string name="optioncard2_description_text">Accede a tu lista de compra personal y calcula cuanto gastaras en tus compras</string>
+    <string name="optioncard3_description_text">Accede a tus lugares de compras guardados o visitados con frecuencias</string>
+    <string name="optioncard1_button_text">Abrir lista de la despensa</string>
+    <string name="optioncard2_button_text">Abrir lista de la compra</string>
+    <string name="optioncard3_button_text">Ver los lugares de interes</string>
 
 </resources>

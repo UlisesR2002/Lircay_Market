@@ -2,22 +2,29 @@ package com.example.lircaymarket.entity
 
 import android.os.Parcel
 import android.os.Parcelable
+import java.util.ArrayList
 
 data class Pantry(
     val pantryid: Int,
-    //val products: List<Product>,
-    val symptoms: List<String>
+    val products: ArrayList<Product>?
+
+
+    //val symptoms: List<String>
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
-        //parcel.createFixedArray(Product,1) ?: emptyList(),
-        parcel.createStringArrayList() ?: emptyList()
+        parcel.createTypedArrayList(Product.CREATOR)
+        //parcel.readArrayList(Product),
+
+        //parcel.createStringArrayList() ?: emptyList()
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(pantryid)
+        parcel.writeTypedList(products)
         //parcel.writeStringList(products)
-        parcel.writeStringList(symptoms)
+
+       // parcel.writeStringList(symptoms)
     }
 
     override fun describeContents(): Int {

@@ -3,20 +3,21 @@ package com.example.lircaymarket
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 //import com.example.lircaymarket.adapters.
 
 import com.example.lircaymarket.entity.User
 
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var users: MutableList<User>
-   // private lateinit var adapterItems: UserListAdapter
+    //private lateinit var users: MutableList<User>
+    private var users = arrayListOf<User>()
     private lateinit var emailText: EditText
     private lateinit var passwordText: EditText
+    private var accountFound : Boolean = false
 
     companion object{
         const val REQUEST_REGISTER = 1
@@ -25,8 +26,9 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        users = mutableListOf(
-            User(1,"Laboratorio","Utalca-IDVRV","lab@gmail.com",1),
+
+        users.add(
+            User(1,"Laboratorio","1234","ADMIN",1),
         )
 
 
@@ -39,20 +41,38 @@ class LoginActivity : AppCompatActivity() {
             val email = emailText.text.toString()
             val password = passwordText.text.toString()
 
-            for (i in users.indices)
+            if(email == "")
             {
-                println("user : ${users[i]}")
-                if(users[i].email.toString() == email && users[i].password.toString() == password)
-                {
-                    val intentMainActivity = Intent(this, MainActivity::class.java)
-                    startActivity(intentMainActivity)
+                Toast.makeText(this, R.string.empty_email_error, Toast.LENGTH_SHORT).show()
+            }else if(password == "")
+            {
+                Toast.makeText(this, R.string.empty_password_error, Toast.LENGTH_SHORT).show()
+            }else {
+                for (i in users.indices) {
+                    println("user : ${users[i]}")
+                    if (users[i].email.toString() == email && users[i].password.toString() == password) {
+                        accountFound = true
+                        val intentMainActivity = Intent(this, MainActivity::class.java)
+
+                        intentMainActivity.putExtra("users", users[i])
+                        startActivityForResult(intentMainActivity, REQUEST_REGISTER)
+
+                        //startActivity(intentMainActivity)
+                    }
                 }
+
+                if(!accountFound)
+                {
+                    Toast.makeText(this, R.string.user_not_found_error, Toast.LENGTH_SHORT).show()
+                }
+
             }
         }
 
     }
     fun goCreateUser(view: View) {
         val intentRegister = Intent(this, RegisterActivity::class.java)
+        intentRegister.putExtra("users",users)
         startActivityForResult(intentRegister, REQUEST_REGISTER)
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

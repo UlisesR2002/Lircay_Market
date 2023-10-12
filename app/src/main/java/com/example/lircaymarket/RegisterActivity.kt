@@ -16,7 +16,9 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var passwordText: EditText
     private lateinit var repeatPasswordText: EditText
     private lateinit var registerButton : Button
+    private var emailUsed: Boolean = false
 
+    private var users = arrayListOf<User>()
     private lateinit var user: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,12 +31,15 @@ class RegisterActivity : AppCompatActivity() {
         repeatPasswordText = findViewById(R.id.RepeatPasswordText)
         registerButton = findViewById(R.id.CreateAccountButton)
 
+        users = intent.getParcelableArrayListExtra<User>("users")!!
+
         registerButton.setOnClickListener{
 
             val username = usernameText.text.toString()
             val email = emailText.text.toString()
             val password = passwordText.text.toString()
             val repeatpassword = repeatPasswordText.text.toString()
+
 
 
             if(username == "")
@@ -49,13 +54,25 @@ class RegisterActivity : AppCompatActivity() {
             {
                 Toast.makeText(this, R.string.repeat_password_error, Toast.LENGTH_SHORT).show()
             }else{
+                emailUsed = false
+
+                for(i in users.indices)
+                {
+                    if(users[i].email == email)
+                    {
+                        Toast.makeText(this, R.string.email_used_error, Toast.LENGTH_SHORT).show()
+                        emailUsed = true
+                    }
+                }
                 //val user = User(2,username.toString(),password.toString(),email.toString(),2)
-                val user = User(2,username,password,email,2)
-                println("user : ${user}")
-                val resultIntent = Intent()
-                resultIntent.putExtra("new", user)
-                setResult(RESULT_OK,resultIntent)
-                finish()
+                if(!emailUsed) {
+                    val user = User(users.size + 1, username, password, email, users.size + 1)
+                    println("user : ${user}")
+                    val resultIntent = Intent()
+                    resultIntent.putExtra("new", user)
+                    setResult(RESULT_OK, resultIntent)
+                    finish()
+                }
             }
         }
     }
