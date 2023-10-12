@@ -7,13 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-//import com.example.lircaymarket.adapters.
 
 import com.example.lircaymarket.entity.User
 
 class LoginActivity : AppCompatActivity() {
 
-    //private lateinit var users: MutableList<User>
     private var users = arrayListOf<User>()
     private lateinit var emailText: EditText
     private lateinit var passwordText: EditText
@@ -28,7 +26,7 @@ class LoginActivity : AppCompatActivity() {
 
 
         users.add(
-            User(1,"Laboratorio","1234","ADMIN",1),
+            User(1,"Laboratorio","1234","ADMIN",1,1),
         )
 
 

@@ -7,7 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.lircaymarket.entity.User
-import com.example.lircaymarket.LoginActivity
+
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -19,7 +19,6 @@ class RegisterActivity : AppCompatActivity() {
     private var emailUsed: Boolean = false
 
     private var users = arrayListOf<User>()
-    private lateinit var user: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,13 +44,14 @@ class RegisterActivity : AppCompatActivity() {
             if(username == "")
             {
                 Toast.makeText(this, R.string.empty_username_error, Toast.LENGTH_SHORT).show()
-            }else if(email == "")
-            {
+            }else if(email == ""){
+
                 Toast.makeText(this, R.string.empty_email_error, Toast.LENGTH_SHORT).show()
             }else if(password == ""){
+
                 Toast.makeText(this, R.string.empty_password_error, Toast.LENGTH_SHORT).show()
-            }else if(password != repeatpassword)
-            {
+            }else if(password != repeatpassword){
+
                 Toast.makeText(this, R.string.repeat_password_error, Toast.LENGTH_SHORT).show()
             }else{
                 emailUsed = false
@@ -66,7 +66,7 @@ class RegisterActivity : AppCompatActivity() {
                 }
                 //val user = User(2,username.toString(),password.toString(),email.toString(),2)
                 if(!emailUsed) {
-                    val user = User(users.size + 1, username, password, email, users.size + 1)
+                    val user = User(users.size + 1, username, password, email, users.size + 1,users.size + 1)
                     println("user : ${user}")
                     val resultIntent = Intent()
                     resultIntent.putExtra("new", user)

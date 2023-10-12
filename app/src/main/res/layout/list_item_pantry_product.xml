@@ -14,19 +14,19 @@
         />
 
     <TextView
-        android:id="@+id/textViewEmail"
+        android:id="@+id/textViewCategory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Category: " />
 
     <TextView
-        android:id="@+id/textViewRoom"
+        android:id="@+id/textViewDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Description: " />
 
     <TextView
-        android:id="@+id/textViewAge"
+        android:id="@+id/textViewAmount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Amount: " />

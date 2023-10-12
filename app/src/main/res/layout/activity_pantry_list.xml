@@ -31,16 +31,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginBottom="16dp"
-            android:text="Create Patient"
-            android:onClick="goCreatePatient"/>
+            android:onClick="goCreateProduct"
+            android:text="Create Patient" />
 
-        <Button
-            android:id="@+id/buttonChangeApapter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginBottom="16dp"
-            android:text="Change Adapter" />
         <!--android:onClick="changeAdapter" -->
     </LinearLayout>
 

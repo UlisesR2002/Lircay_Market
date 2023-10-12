@@ -35,4 +35,21 @@
     <string name="optioncard2_button_text">Abrir lista de la compra</string>
     <string name="optioncard3_button_text">Ver los lugares de interes</string>
 
+    <!-- PantryListActivity -->
+    <string name="product_category_text">Categoria: </string>
+    <string name="product_decription_text">Decripcion: </string>
+    <string name="product_amount_text">Cantidad: </string>
+
+    <!-- PantryListActivity -->
+    <string name="name_product_text">Nombre</string>
+    <string name="category_product_text">Categoria</string>
+    <string name="description_product_text">Descripcion</string>
+    <string name="amount_product_text">Cantidad</string>
+    <string name="save_button">Guardar</string>
+    <string name="empty_category_error">No existe una categoria</string>
+    <string name="empty_description_error">No existe una descripcion</string>
+    <string name="empty_amount_error">No existe una cantidad</string>
+    <string name="under_0_amount_error">Ingrese una cantidad mayor a 0</string>
+
+
 </resources>

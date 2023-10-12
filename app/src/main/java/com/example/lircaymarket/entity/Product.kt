@@ -6,7 +6,7 @@ import android.os.Parcelable
 data class Product(
     val productid: Int,
     val productname: String?,
-    val productamount: Int,
+    var productamount: Int,
     val productdescription: String?,
     val productcategory: String?
 ) : Parcelable {
@@ -29,6 +29,7 @@ data class Product(
     override fun describeContents(): Int {
         return 0
     }
+
 
     companion object CREATOR : Parcelable.Creator<Product> {
         override fun createFromParcel(parcel: Parcel): Product {
