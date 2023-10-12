@@ -4,14 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextWatcher
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.text.Editable
 import android.widget.Toast
 import com.example.lircaymarket.entity.Pantry
 import com.example.lircaymarket.entity.Product
-import com.example.lircaymarket.entity.User
 
 
 class ProductRegistratationActivity : AppCompatActivity() {
@@ -108,7 +106,7 @@ class ProductRegistratationActivity : AppCompatActivity() {
                     setResult(RESULT_OK, resultIntent)
                     finish()
                 }*/*/
-                val product = Product(products.size + 1, name, amount.toInt(), description,category)
+                val product = Product(products.size + 1, name, amount.toInt(), description,category,0)
                 val resultIntent = Intent()
                 resultIntent.putExtra("new", product)
                 setResult(RESULT_OK, resultIntent)

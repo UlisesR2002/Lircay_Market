@@ -46,6 +46,10 @@ class MainActivity : AppCompatActivity() {
         optioncard1View.findViewById<TextView>(R.id.cardButtonNavigate).setOnClickListener{view ->
             goPantryApp(view)
         }
+
+        optioncard2View.findViewById<TextView>(R.id.cardButtonNavigate).setOnClickListener{view ->
+            goShoppinglistApp(view)
+        }
     }
 
     fun goPantryApp(view: View){
@@ -53,5 +57,13 @@ class MainActivity : AppCompatActivity() {
         intentPantryList.putExtra("users", user)
         startActivity(intentPantryList)
     }
+
+    fun goShoppinglistApp(view: View){
+        val intentPantryList = Intent(this, ShopingListActivity::class.java)
+        intentPantryList.putExtra("users", user)
+        startActivity(intentPantryList)
+    }
+
+
 
 }
