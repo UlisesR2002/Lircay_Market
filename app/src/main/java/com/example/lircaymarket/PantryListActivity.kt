@@ -16,11 +16,11 @@ class PantryListActivity : AppCompatActivity() {
     private lateinit var  listViewProducts: ListView
     private var listOption: Boolean = true
     private var detailOption: Boolean = false
-    private lateinit var user: User
     private lateinit var pantry: Pantry
     private var products = arrayListOf<Product>()
     private lateinit var adapterItems: ProductPantryListAdapter
     private lateinit var adapter : ArrayAdapter<Product>
+
 
     companion object{
         const val REQUEST_REGISTER = 1

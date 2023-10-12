@@ -7,11 +7,10 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.TextView
-import com.example.lircaymarket.adapters.ProductPantryListAdapter
+import com.example.lircaymarket.adapters.ProductPantryDetailDialog
 import com.example.lircaymarket.adapters.ProductShoppingListAdapter
 import com.example.lircaymarket.entity.Product
 import com.example.lircaymarket.entity.Shoppinglist
-import com.example.lircaymarket.entity.User
 
 class ShopingListActivity : AppCompatActivity() {
 
@@ -19,7 +18,6 @@ class ShopingListActivity : AppCompatActivity() {
     private lateinit var totalprice: TextView
     private var listOption: Boolean = true
     private var detailOption: Boolean = false
-    private lateinit var user: User
     private lateinit var shoppinglist: Shoppinglist
     private var products = arrayListOf<Product>()
     private lateinit var adapterItems: ProductShoppingListAdapter
@@ -32,9 +30,7 @@ class ShopingListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shoping_list)
 
-        user = intent.getParcelableExtra<User>("users")!!
-
-        shoppinglist = Shoppinglist(user.pantryid, arrayListOf<Product>(),0)
+        shoppinglist = intent.getParcelableExtra<Shoppinglist>("shoppinglist")!!
 
         listViewProducts = findViewById(R.id.listViewProducts)
 
@@ -65,15 +61,15 @@ class ShopingListActivity : AppCompatActivity() {
 
         for(i in products) {
 
+           //shoppinglist.totalprice = products[i].productamount * products[i].productprice
 
-            //shoppinglist.totalprice = products[i].productamount * products[i].productprice
         }
         shoppinglist.totalprice = 1
         totalprice = findViewById(R.id.TotalpriceText)
 
 
 
-        totalprice.setText(shoppinglist.totalprice.toString())
+        totalprice.setText("Precio total:\n$"+shoppinglist.totalprice.toString())
 
 
 
@@ -82,6 +78,19 @@ class ShopingListActivity : AppCompatActivity() {
         listViewProducts.adapter = adapter
 
         changeAdapter()
+
+        listViewProducts.setOnItemClickListener { _, _, position, _ ->
+            val selectedPatient = products[position]
+            listOption = !listOption
+            if (detailOption) {
+                showProductDetailDialog(selectedPatient)
+            }
+            else {
+                val intent = Intent(this, ProductDetailActivity::class.java)
+                intent.putExtra("product", selectedPatient)
+                startActivity(intent)
+            }
+        }
     }
     fun changeAdapter() {
         if (listOption) {
@@ -96,11 +105,16 @@ class ShopingListActivity : AppCompatActivity() {
         listOption = !listOption
     }
 
+    private fun showProductDetailDialog(product: Product) {
+        val dialog = ProductPantryDetailDialog(this, product)
+        dialog.show()
+    }
+
     fun goCreateProduct(view: View)
     {
-        val intent = Intent(this, ProductRegistratationActivity::class.java)
+        val intent = Intent(this, ProductShoppingListRegistrationActivity::class.java)
         intent.putExtra("shoppinglist", shoppinglist)
-        startActivityForResult(intent, PantryListActivity.REQUEST_REGISTER)
+        startActivityForResult(intent, REQUEST_REGISTER)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

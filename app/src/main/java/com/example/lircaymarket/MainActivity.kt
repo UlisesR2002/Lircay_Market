@@ -94,7 +94,7 @@ class MainActivity : AppCompatActivity() {
 
     fun goShoppinglistApp(view: View){
         val intentPantryList = Intent(this, ShopingListActivity::class.java)
-        intentPantryList.putExtra("users", user)
+        intentPantryList.putExtra("shoppinglist", shoppinglist)
         startActivity(intentPantryList)
     }
 

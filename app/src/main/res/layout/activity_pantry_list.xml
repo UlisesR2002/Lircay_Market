@@ -32,7 +32,7 @@
             android:layout_gravity="end"
             android:layout_marginBottom="16dp"
             android:onClick="goCreateProduct"
-            android:text="Create Patient" />
+            android:text="@string/add_product_pantry_button_text" />
 
         <!--android:onClick="changeAdapter" -->
     </LinearLayout>

@@ -35,21 +35,32 @@
     <string name="optioncard2_button_text">Abrir lista de la compra</string>
     <string name="optioncard3_button_text">Ver los lugares de interes</string>
 
-    <!-- PantryListActivity -->
+
+    <!-- PantryListActivity/ShoppingListActivity-->
     <string name="product_category_text">Categoria: </string>
     <string name="product_decription_text">Decripcion: </string>
     <string name="product_amount_text">Cantidad: </string>
+    <string name="add_product_pantry_button_text">Agregar producto a la despensa</string>
+    <string name="add_product_shoppinglist_button_text">Agregar producto</string>
 
-    <!-- PantryListActivity -->
     <string name="name_product_text">Nombre</string>
     <string name="category_product_text">Categoria</string>
     <string name="description_product_text">Descripcion</string>
     <string name="amount_product_text">Cantidad</string>
+    <string name="price_product_text">Precio</string>
+    <string name="check_product_text">Articulo comprado</string>
+
+    <string name="edit_descripcion_text">Boton para editar un producto</string>
+    <string name="delete_descripcion_text">Boton para eliminar un producto</string>
+
+
     <string name="save_button">Guardar</string>
     <string name="empty_category_error">No existe una categoria</string>
     <string name="empty_description_error">No existe una descripcion</string>
     <string name="empty_amount_error">No existe una cantidad</string>
     <string name="under_0_amount_error">Ingrese una cantidad mayor a 0</string>
+    <string name="empty_price_error">No existe una precio</string>
+    <string name="under_0_price_error">Ingrese un precio mayor a 0</string>
 
 
 </resources>
