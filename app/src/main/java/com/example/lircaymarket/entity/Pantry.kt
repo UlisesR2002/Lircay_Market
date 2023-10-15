@@ -6,17 +6,17 @@ import java.util.ArrayList
 
 data class Pantry(
     val pantryid: Int,
-    val products: ArrayList<Product>?
+    var product: Product?
 
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
-        parcel.createTypedArrayList(Product.CREATOR)
+        parcel.readParcelable(Product::class.java.classLoader)
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(pantryid)
-        parcel.writeTypedList(products)
+        parcel.writeParcelable(product, flags)
     }
 
     override fun describeContents(): Int {

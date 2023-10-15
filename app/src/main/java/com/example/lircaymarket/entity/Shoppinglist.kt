@@ -6,28 +6,19 @@ import java.util.ArrayList
 
 data class Shoppinglist(
     val shoppinglistid: Int,
-    val products: ArrayList<Product>?,
-    var totalprice: Int,
+    var product: Product?
 
 
     //val symptoms: List<String>
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
-        parcel.createTypedArrayList(Product.CREATOR),
-        parcel.readInt()
-        //parcel.readArrayList(Product),
-
-        //parcel.createStringArrayList() ?: emptyList()
+        parcel.readParcelable(Product::class.java.classLoader)
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(shoppinglistid)
-        parcel.writeTypedList(products)
-        parcel.writeInt(totalprice)
-        //parcel.writeStringList(products)
-
-       // parcel.writeStringList(symptoms)
+        parcel.writeParcelable(product, flags)
     }
 
     override fun describeContents(): Int {

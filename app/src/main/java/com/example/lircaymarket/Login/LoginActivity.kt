@@ -1,4 +1,4 @@
-package com.example.lircaymarket
+package com.example.lircaymarket.Login
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,12 +7,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.example.lircaymarket.entity.DataManager
+import com.example.lircaymarket.R
 
 import com.example.lircaymarket.entity.User
 
 class LoginActivity : AppCompatActivity() {
 
-    private var users = arrayListOf<User>()
     private lateinit var emailText: EditText
     private lateinit var passwordText: EditText
     private var accountFound : Boolean = false
@@ -24,11 +25,9 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        DataManager.AddUser(User(1,"Laboratorio","1234","ADMIN",1,1))
 
-        users.add(
-            User(1,"Laboratorio","1234","ADMIN",1,1),
-        )
-
+        var users = DataManager.GetUsers()
 
         emailText = findViewById(R.id.EmailText)
         passwordText = findViewById(R.id.PasswordText)
@@ -70,7 +69,6 @@ class LoginActivity : AppCompatActivity() {
     }
     fun goCreateUser(view: View) {
         val intentRegister = Intent(this, RegisterActivity::class.java)
-        intentRegister.putExtra("users",users)
         startActivityForResult(intentRegister, REQUEST_REGISTER)
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -79,8 +77,8 @@ class LoginActivity : AppCompatActivity() {
         if(requestCode == REQUEST_REGISTER && resultCode == RESULT_OK) {
             val newUser = data?.getParcelableExtra<User>("new")
             if(newUser != null){
-                users.add(newUser)
 
+                DataManager.AddUser(newUser)
 
             }
         }

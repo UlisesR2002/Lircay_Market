@@ -55,6 +55,8 @@
 
 
     <string name="save_button">Guardar</string>
+    <string name="cancel_button">Cancelar</string>
+    <string name="borrar_button">Borrar</string>
     <string name="empty_category_error">No existe una categoria</string>
     <string name="empty_description_error">No existe una descripcion</string>
     <string name="empty_amount_error">No existe una cantidad</string>

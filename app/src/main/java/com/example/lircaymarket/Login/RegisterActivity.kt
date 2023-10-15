@@ -1,4 +1,4 @@
-package com.example.lircaymarket
+package com.example.lircaymarket.Login
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.example.lircaymarket.entity.DataManager
+import com.example.lircaymarket.R
 import com.example.lircaymarket.entity.User
 
 
@@ -30,7 +32,7 @@ class RegisterActivity : AppCompatActivity() {
         repeatPasswordText = findViewById(R.id.RepeatPasswordText)
         registerButton = findViewById(R.id.CreateAccountButton)
 
-        users = intent.getParcelableArrayListExtra<User>("users")!!
+        val users = DataManager.GetUsers()
 
         registerButton.setOnClickListener{
 
