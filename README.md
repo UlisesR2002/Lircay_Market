@@ -36,4 +36,9 @@ Diagrama de clases:
 ![Diagrama sin título drawio (2)](https://github.com/UlisesR2002/Lircay_Market/assets/116087176/29fd7e1a-6811-42ea-898d-81be5b8de306)
 
 
+Presentación:
+
+https://youtu.be/xWArnRx8A0g
+
+
 
