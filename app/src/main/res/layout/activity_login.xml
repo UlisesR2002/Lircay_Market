@@ -44,7 +44,7 @@
         android:autofillHints=""
         android:ems="15"
         android:hint="@string/email_text"
-        android:inputType="text"
+        android:inputType="text|textEmailAddress"
         android:minHeight="48dp"
         android:textColor="@color/black"
         android:textColorHint="@color/hint_white"
