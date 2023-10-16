@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
         if(DataManager.pantry.isEmpty()) {
             DataManager.pantry.add(
                 Pantry(
-                    user.pantryid,
+                    DataManager.pantry.size + 1,
                     Product(
                         DataManager.pantry.size + 1,
                         "Ravioli carne",
@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
 
             DataManager.pantry.add(
                 Pantry(
-                    user.pantryid,
+                    DataManager.pantry.size + 1,
                     Product(
                         DataManager.pantry.size + 1,
                         "Coca-cola",
@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity() {
         if(DataManager.shoppinglist.isEmpty()) {
             DataManager.shoppinglist.add(
                 Shoppinglist(
-                    user.shoppinglistid,
+                    DataManager.shoppinglist.size + 1,
                     Product(DataManager.shoppinglist.size + 1,
                         "Leche",
                         1,
@@ -102,7 +102,7 @@ class MainActivity : AppCompatActivity() {
 
             DataManager.shoppinglist.add(
                 Shoppinglist(
-                    user.shoppinglistid,
+                    DataManager.shoppinglist.size + 1,
                     Product(
                         DataManager.shoppinglist.size + 1,
                         "Hamburguesa",

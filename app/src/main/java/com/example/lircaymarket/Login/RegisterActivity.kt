@@ -68,7 +68,7 @@ class RegisterActivity : AppCompatActivity() {
                 }
                 //val user = User(2,username.toString(),password.toString(),email.toString(),2)
                 if(!emailUsed) {
-                    val user = User(users.size + 1, username, password, email, users.size + 1,users.size + 1)
+                    val user = User(users.size + 1, username, password, email)
                     println("user : ${user}")
                     val resultIntent = Intent()
                     resultIntent.putExtra("new", user)

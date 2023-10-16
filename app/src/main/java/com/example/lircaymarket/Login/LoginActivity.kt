@@ -25,7 +25,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        DataManager.AddUser(User(1,"Laboratorio","1234","ADMIN",1,1))
+        DataManager.AddUser(User(1,"Laboratorio","1234","ADMIN"))
 
         var users = DataManager.GetUsers()
 
