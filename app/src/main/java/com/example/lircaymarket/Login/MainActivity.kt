@@ -2,17 +2,15 @@ package com.example.lircaymarket.Login
 
 import android.content.Intent
 import android.os.Bundle
-import android.provider.ContactsContract.Data
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.lircaymarket.MarketListActivity
-import com.example.lircaymarket.entity.DataManager
+import com.example.lircaymarket.entity.SaveData
 import com.example.lircaymarket.PantryListActivity
 import com.example.lircaymarket.R
-import com.example.lircaymarket.ShopingListActivity
-import com.example.lircaymarket.adapters.ProductPantryListAdapter
+import com.example.lircaymarket.ShoppingListActivity
 import com.example.lircaymarket.entity.Market
 import com.example.lircaymarket.entity.Pantry
 import com.example.lircaymarket.entity.Product
@@ -56,12 +54,12 @@ class MainActivity : AppCompatActivity() {
         optioncard2View.findViewById<Button>(R.id.cardButtonNavigate).setText(R.string.optioncard2_button_text)
         optioncard3View.findViewById<Button>(R.id.cardButtonNavigate).setText(R.string.optioncard3_button_text)
 
-        if(DataManager.pantry.isEmpty()) {
-            DataManager.pantry.add(
+        if(SaveData.pantry.isEmpty()) {
+            SaveData.pantry.add(
                 Pantry(
-                    DataManager.pantry.size + 1,
+                    SaveData.pantry.size + 1,
                     Product(
-                        DataManager.pantry.size + 1,
+                        SaveData.pantry.size + 1,
                         "Ravioli carne",
                         1,
                         "Paquete de 400 gramos de pasta rellena de marca carrozi",
@@ -71,11 +69,11 @@ class MainActivity : AppCompatActivity() {
                 )
             )
 
-            DataManager.pantry.add(
+            SaveData.pantry.add(
                 Pantry(
-                    DataManager.pantry.size + 1,
+                    SaveData.pantry.size + 1,
                     Product(
-                        DataManager.pantry.size + 1,
+                        SaveData.pantry.size + 1,
                         "Coca-cola",
                         1,
                         "Botella de 2 litros de bebida marca coca-cola",
@@ -86,11 +84,11 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
-        if(DataManager.shoppinglist.isEmpty()) {
-            DataManager.shoppinglist.add(
+        if(SaveData.shoppinglist.isEmpty()) {
+            SaveData.shoppinglist.add(
                 Shoppinglist(
-                    DataManager.shoppinglist.size + 1,
-                    Product(DataManager.shoppinglist.size + 1,
+                    SaveData.shoppinglist.size + 1,
+                    Product(SaveData.shoppinglist.size + 1,
                         "Leche",
                         1,
                         "Caja de un litro de leche de marca colun",
@@ -100,11 +98,11 @@ class MainActivity : AppCompatActivity() {
                 )
             )
 
-            DataManager.shoppinglist.add(
+            SaveData.shoppinglist.add(
                 Shoppinglist(
-                    DataManager.shoppinglist.size + 1,
+                    SaveData.shoppinglist.size + 1,
                     Product(
-                        DataManager.shoppinglist.size + 1,
+                        SaveData.shoppinglist.size + 1,
                         "Hamburguesa",
                         5,
                         "Paquete de hamburguesa individual de marca pf",
@@ -115,10 +113,10 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
-        if(DataManager.Market.isEmpty()) {
-            DataManager.Market.add(
+        if(SaveData.Market.isEmpty()) {
+            SaveData.Market.add(
                 Market(
-                    DataManager.Market.size + 1,
+                    SaveData.Market.size + 1,
                     "Unimarc",
                     "Supermercado",
                     "Cinco Norte 3615"
@@ -126,9 +124,9 @@ class MainActivity : AppCompatActivity() {
                 )
 
 
-            DataManager.Market.add(
+            SaveData.Market.add(
                 Market(
-                        DataManager.Market.size + 1,
+                        SaveData.Market.size + 1,
                         "Lider Talca",
                         "Supermercado",
                         "Dos Norte 1422"
@@ -158,7 +156,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun goShoppinglistApp(view: View){
-        val intentShoppingList = Intent(this, ShopingListActivity::class.java)
+        val intentShoppingList = Intent(this, ShoppingListActivity::class.java)
         startActivity(intentShoppingList)
     }
 

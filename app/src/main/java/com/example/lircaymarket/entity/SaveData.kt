@@ -1,17 +1,11 @@
 package com.example.lircaymarket.entity
 
-object DataManager
+object SaveData
 {
-    init
-    {
-        println("Singleton DataManager invoked.")
-    }
-
     private var users = arrayListOf<User>()
     var Market = arrayListOf<Market>()
     var pantry = arrayListOf<Pantry>()
     var shoppinglist = arrayListOf<Shoppinglist>()
-    var totalPrice = Int
 
     fun AddUser(user: User)
     {

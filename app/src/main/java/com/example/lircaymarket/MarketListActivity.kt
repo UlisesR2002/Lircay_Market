@@ -6,8 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ListView
 import com.example.lircaymarket.adapters.MarketListAdapter
-import com.example.lircaymarket.adapters.ProductPantryListAdapter
-import com.example.lircaymarket.entity.DataManager
+import com.example.lircaymarket.entity.SaveData
 
 class MarketListActivity : AppCompatActivity() {
     private lateinit var listViewMarket: ListView
@@ -17,7 +16,7 @@ class MarketListActivity : AppCompatActivity() {
 
         listViewMarket = findViewById(R.id.listViewMarket)
 
-        listViewMarket.adapter = MarketListAdapter(this, android.R.layout.simple_list_item_1, DataManager.Market)
+        listViewMarket.adapter = MarketListAdapter(this, android.R.layout.simple_list_item_1, SaveData.Market)
 
         listViewMarket.setOnItemClickListener { _, _, position, _ ->
             goEditProduct(position)
@@ -26,7 +25,7 @@ class MarketListActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         val listView = findViewById<ListView>(R.id.listViewMarket)
-        listView.adapter = MarketListAdapter(this, R.layout.list_item_market, DataManager.Market)
+        listView.adapter = MarketListAdapter(this, R.layout.list_item_market, SaveData.Market)
     }
     fun goCreateMarket(view: View) {
         val intent = Intent(this, MarketRegistrationActivity::class.java)

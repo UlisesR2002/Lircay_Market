@@ -7,21 +7,23 @@ import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.example.lircaymarket.entity.DataManager
+import com.example.lircaymarket.entity.SaveData
 import com.example.lircaymarket.entity.Product
 import com.example.lircaymarket.entity.Shoppinglist
 
-private lateinit var SnameText: EditText
-private lateinit var categoryText: EditText
-private lateinit var descriptionText: EditText
-private lateinit var amountText: EditText
-private lateinit var priceText: EditText
-private lateinit var SaveProductButton : Button
-private lateinit var CancelProductButton : Button
 
-private var editProduct: Shoppinglist? = null
+
 
 class ProductShoppingListRegistrationActivity : AppCompatActivity() {
+    private lateinit var SnameText: EditText
+    private lateinit var categoryText: EditText
+    private lateinit var descriptionText: EditText
+    private lateinit var amountText: EditText
+    private lateinit var priceText: EditText
+    private lateinit var SaveProductButton : Button
+    private lateinit var CancelProductButton : Button
+
+    private var editProduct: Shoppinglist? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_shopping_list_registration)
@@ -38,7 +40,7 @@ class ProductShoppingListRegistrationActivity : AppCompatActivity() {
 
         if(index >= 0)
         {
-            editProduct = DataManager.shoppinglist[index]
+            editProduct = SaveData.shoppinglist[index]
         }
 
         if(editProduct == null) {
@@ -56,13 +58,13 @@ class ProductShoppingListRegistrationActivity : AppCompatActivity() {
                 }
 
                 override fun afterTextChanged(p0: Editable?) {
-                    for (i in DataManager.shoppinglist.indices) {
+                    for (i in SaveData.shoppinglist.indices) {
 
-                        if (DataManager.shoppinglist[i].product?.productname.toString() == SnameText.editableText.toString()) {
-                            categoryText.setText(DataManager.shoppinglist[i].product?.productcategory.toString())
-                            descriptionText.setText(DataManager.shoppinglist[i].product?.productdescription.toString())
-                            amountText.setText(DataManager.shoppinglist[i].product?.productamount.toString())
-                            priceText.setText(DataManager.shoppinglist[i].product?.productprice.toString())
+                        if (SaveData.shoppinglist[i].product?.productname.toString() == SnameText.editableText.toString()) {
+                            categoryText.setText(SaveData.shoppinglist[i].product?.productcategory.toString())
+                            descriptionText.setText(SaveData.shoppinglist[i].product?.productdescription.toString())
+                            amountText.setText(SaveData.shoppinglist[i].product?.productamount.toString())
+                            priceText.setText(SaveData.shoppinglist[i].product?.productprice.toString())
 
                         }
                     }
@@ -126,11 +128,11 @@ class ProductShoppingListRegistrationActivity : AppCompatActivity() {
             Toast.makeText(this, R.string.under_0_price_error, Toast.LENGTH_SHORT).show()
         }else {
 
-            DataManager.shoppinglist.add(
+            SaveData.shoppinglist.add(
                 Shoppinglist(
-                    DataManager.shoppinglist[1].shoppinglistid,
+                    SaveData.shoppinglist[1].shoppinglistid,
                     Product(
-                        DataManager.pantry.size + 1,
+                        SaveData.pantry.size + 1,
                         name,
                         amount.toInt(),
                         description,
@@ -160,7 +162,7 @@ class ProductShoppingListRegistrationActivity : AppCompatActivity() {
     }
 
     fun onDeleteProduct(){
-        DataManager.shoppinglist.remove(editProduct)
+        SaveData.shoppinglist.remove(editProduct)
         finish()
     }
 }

@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.lircaymarket.adapters.ProductPantryListAdapter
-import com.example.lircaymarket.entity.DataManager
+import com.example.lircaymarket.entity.SaveData
 
 class PantryListActivity : AppCompatActivity() {
 
@@ -18,7 +18,7 @@ class PantryListActivity : AppCompatActivity() {
 
         listViewProducts = findViewById(R.id.listViewProducts)
 
-        listViewProducts.adapter = ProductPantryListAdapter(this, android.R.layout.simple_list_item_1, DataManager.pantry)
+        listViewProducts.adapter = ProductPantryListAdapter(this, android.R.layout.simple_list_item_1, SaveData.pantry)
 
         listViewProducts.setOnItemClickListener { _, _, position, _ ->
             goEditProduct(position)
@@ -29,7 +29,7 @@ class PantryListActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         val listView = findViewById<ListView>(R.id.listViewProducts)
-        listView.adapter = ProductPantryListAdapter(this, R.layout.list_item_pantry_product, DataManager.pantry)
+        listView.adapter = ProductPantryListAdapter(this, R.layout.list_item_pantry_product, SaveData.pantry)
     }
     fun goCreateProduct(view: View) {
         val intent = Intent(this, ProductRegistratationActivity::class.java)

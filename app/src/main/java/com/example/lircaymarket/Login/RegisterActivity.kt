@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.example.lircaymarket.entity.DataManager
+import com.example.lircaymarket.entity.SaveData
 import com.example.lircaymarket.R
 import com.example.lircaymarket.entity.User
 
@@ -32,7 +32,7 @@ class RegisterActivity : AppCompatActivity() {
         repeatPasswordText = findViewById(R.id.RepeatPasswordText)
         registerButton = findViewById(R.id.CreateAccountButton)
 
-        val users = DataManager.GetUsers()
+        val users = SaveData.GetUsers()
 
         registerButton.setOnClickListener{
 

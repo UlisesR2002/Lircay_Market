@@ -7,7 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.text.Editable
 import android.widget.Toast
-import com.example.lircaymarket.entity.DataManager
+import com.example.lircaymarket.entity.SaveData
 import com.example.lircaymarket.entity.Pantry
 import com.example.lircaymarket.entity.Product
 
@@ -38,7 +38,7 @@ class ProductRegistratationActivity : AppCompatActivity() {
 
         if(index >= 0)
         {
-            editProduct = DataManager.pantry[index]
+            editProduct = SaveData.pantry[index]
         }
 
         if(editProduct == null) {
@@ -56,12 +56,12 @@ class ProductRegistratationActivity : AppCompatActivity() {
                 }
 
                 override fun afterTextChanged(p0: Editable?) {
-                    for (i in DataManager.pantry.indices) {
+                    for (i in SaveData.pantry.indices) {
 
-                        if (DataManager.pantry[i].product?.productname.toString() == nameText.editableText.toString()) {
-                            categoryText.setText(DataManager.pantry[i].product?.productcategory.toString())
-                            descriptionText.setText(DataManager.pantry[i].product?.productdescription.toString())
-                            amountText.setText(DataManager.pantry[i].product?.productamount.toString())
+                        if (SaveData.pantry[i].product?.productname.toString() == nameText.editableText.toString()) {
+                            categoryText.setText(SaveData.pantry[i].product?.productcategory.toString())
+                            descriptionText.setText(SaveData.pantry[i].product?.productdescription.toString())
+                            amountText.setText(SaveData.pantry[i].product?.productamount.toString())
                         }
                     }
                 }
@@ -117,11 +117,11 @@ class ProductRegistratationActivity : AppCompatActivity() {
 
             Toast.makeText(this, R.string.under_0_amount_error, Toast.LENGTH_SHORT).show()
         }else {
-            DataManager.pantry.add(
+            SaveData.pantry.add(
                 Pantry(
-                    DataManager.pantry[1].pantryid,
+                    SaveData.pantry[1].pantryid,
                     Product(
-                        DataManager.pantry.size + 1,
+                        SaveData.pantry.size + 1,
                         name,
                         amount.toInt(),
                         description,
@@ -149,7 +149,7 @@ class ProductRegistratationActivity : AppCompatActivity() {
     }
 
     fun onDeleteProduct(){
-        DataManager.pantry.remove(editProduct)
+        SaveData.pantry.remove(editProduct)
         finish()
     }
 }

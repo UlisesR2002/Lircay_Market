@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.example.lircaymarket.entity.DataManager
+import com.example.lircaymarket.entity.SaveData
 import com.example.lircaymarket.R
 
 import com.example.lircaymarket.entity.User
@@ -25,9 +25,9 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        DataManager.AddUser(User(1,"Laboratorio","1234","ADMIN"))
+        SaveData.AddUser(User(1,"Laboratorio","1234","ADMIN"))
 
-        var users = DataManager.GetUsers()
+        var users = SaveData.GetUsers()
 
         emailText = findViewById(R.id.EmailText)
         passwordText = findViewById(R.id.PasswordText)
@@ -78,7 +78,7 @@ class LoginActivity : AppCompatActivity() {
             val newUser = data?.getParcelableExtra<User>("new")
             if(newUser != null){
 
-                DataManager.AddUser(newUser)
+                SaveData.AddUser(newUser)
 
             }
         }

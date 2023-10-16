@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.example.lircaymarket.entity.DataManager
+import com.example.lircaymarket.entity.SaveData
 import com.example.lircaymarket.entity.Market
 
 class MarketRegistrationActivity : AppCompatActivity() {
@@ -31,7 +31,7 @@ class MarketRegistrationActivity : AppCompatActivity() {
 
         if(index >= 0)
         {
-            editMarket = DataManager.Market[index]
+            editMarket = SaveData.Market[index]
         }
 
         if(editMarket == null){
@@ -72,9 +72,9 @@ class MarketRegistrationActivity : AppCompatActivity() {
 
             Toast.makeText(this, R.string.empty_direction_error, Toast.LENGTH_SHORT).show()
         }else{
-            DataManager.Market.add(
+            SaveData.Market.add(
                 Market(
-                    DataManager.Market.size + 1,
+                    SaveData.Market.size + 1,
                     name,
                     type,
                     direction
@@ -97,7 +97,7 @@ class MarketRegistrationActivity : AppCompatActivity() {
     }
 
     fun onDeleteMarket(){
-        DataManager.Market.remove(editMarket)
+        SaveData.Market.remove(editMarket)
         finish()
     }
 

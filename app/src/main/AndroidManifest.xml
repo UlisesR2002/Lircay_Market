@@ -25,7 +25,7 @@
             android:name=".ProductShoppingListRegistrationActivity"
             android:exported="false" />
         <activity
-            android:name=".ShopingListActivity"
+            android:name=".ShoppingListActivity"
             android:exported="false" />
         <activity
             android:name=".ProductRegistratationActivity"
