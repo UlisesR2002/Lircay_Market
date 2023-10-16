@@ -25,3 +25,9 @@ caso de que compartan el mismo nombre al crearlo, esto para optimizar tiempo de 
         El programa debe de retener la informacion de las listas mientras este en ejecucion
         El programa debe contar con una interfaz intuitiva y facil de usar
         Los datos de los usuarios deben estar protegidos
+
+Diagrama de clases:
+
+![Diagrama sin título drawio](https://github.com/UlisesR2002/Lircay_Market/assets/116087176/a2d1c1ee-35a5-4633-925f-4e85f18906f2)
+
+
