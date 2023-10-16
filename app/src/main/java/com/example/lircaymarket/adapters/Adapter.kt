@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.example.lircaymarket.R
+import com.example.lircaymarket.entity.Market
 import com.example.lircaymarket.entity.Pantry
 import com.example.lircaymarket.entity.Shoppinglist
 
@@ -82,6 +83,42 @@ class ProductShoppingListAdapter(
             descriptionTextView.text = "Descripcion:"
             amountTextView.text = "Cantidad:"
             priceTextView.text = "Precio: $"
+        }
+
+        return listItemView
+    }
+}
+
+class MarketListAdapter(
+    context: Context,
+    resource: Int,
+    markets: List<Market>,
+) : ArrayAdapter<Market>(context, resource, markets) {
+    companion object{
+        const val REQUEST_REGISTER = 1
+    }
+
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+        val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val listItemView = convertView ?: inflater.inflate(R.layout.list_item_market, null)
+
+        // Get the patient data at the current position
+        val markets = getItem(position)
+
+        // Bind patient data to TextViews in the custom layout
+        val nameTextView = listItemView.findViewById<TextView>(R.id.textViewName)
+        val typeTextView = listItemView.findViewById<TextView>(R.id.textViewType)
+        val directionTextView = listItemView.findViewById<TextView>(R.id.textViewDirection)
+
+
+        if(markets != null) {
+            nameTextView.text = markets.marketname
+            typeTextView.text = "Tipo: " + markets.markettype
+            directionTextView.text = "Direccion: " + markets.marketdirection
+        }else{
+            nameTextView.text = "Nombre:"
+            typeTextView.text = "Tipo:"
+            directionTextView.text = "Direccion:"
         }
 
         return listItemView

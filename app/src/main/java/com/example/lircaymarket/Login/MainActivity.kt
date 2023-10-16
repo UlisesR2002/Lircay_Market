@@ -7,11 +7,13 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.lircaymarket.MarketListActivity
 import com.example.lircaymarket.entity.DataManager
 import com.example.lircaymarket.PantryListActivity
 import com.example.lircaymarket.R
 import com.example.lircaymarket.ShopingListActivity
 import com.example.lircaymarket.adapters.ProductPantryListAdapter
+import com.example.lircaymarket.entity.Market
 import com.example.lircaymarket.entity.Pantry
 import com.example.lircaymarket.entity.Product
 import com.example.lircaymarket.entity.Shoppinglist
@@ -113,12 +115,38 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
+        if(DataManager.Market.isEmpty()) {
+            DataManager.Market.add(
+                Market(
+                    DataManager.Market.size + 1,
+                    "Unimarc",
+                    "Supermercado",
+                    "Cinco Norte 3615"
+                    )
+                )
+
+
+            DataManager.Market.add(
+                Market(
+                        DataManager.Market.size + 1,
+                        "Lider Talca",
+                        "Supermercado",
+                        "Dos Norte 1422"
+                    )
+                )
+
+        }
+
         optioncard1View.findViewById<TextView>(R.id.cardButtonNavigate).setOnClickListener{ view ->
             goPantryApp(view)
         }
 
         optioncard2View.findViewById<TextView>(R.id.cardButtonNavigate).setOnClickListener{ view ->
             goShoppinglistApp(view)
+        }
+
+        optioncard3View.findViewById<TextView>(R.id.cardButtonNavigate).setOnClickListener{ view ->
+            goMarketApp(view)
         }
 
 
@@ -132,5 +160,10 @@ class MainActivity : AppCompatActivity() {
     fun goShoppinglistApp(view: View){
         val intentShoppingList = Intent(this, ShopingListActivity::class.java)
         startActivity(intentShoppingList)
+    }
+
+    fun goMarketApp(view: View){
+        val intentMarketList = Intent(this, MarketListActivity::class.java)
+        startActivity(intentMarketList)
     }
 }

@@ -6,10 +6,12 @@ import android.os.Parcelable
 data class Market(
     val marketid: Int,
     var marketname: String?,
-    var marketdescription: String?,
+    var markettype: String?,
+    var marketdirection: String?
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
+        parcel.readString(),
         parcel.readString(),
         parcel.readString()
     )
@@ -17,7 +19,8 @@ data class Market(
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(marketid)
         parcel.writeString(marketname)
-        parcel.writeString(marketdescription)
+        parcel.writeString(markettype)
+        parcel.writeString(marketdirection)
     }
 
     override fun describeContents(): Int {

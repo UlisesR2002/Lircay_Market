@@ -42,6 +42,7 @@
     <string name="product_amount_text">Cantidad: </string>
     <string name="add_product_pantry_button_text">Agregar producto a la despensa</string>
     <string name="add_product_shoppinglist_button_text">Agregar producto</string>
+    <string name="add_marketlist_button_text">Agregar tiendas a la lista</string>
 
     <string name="name_product_text">Nombre</string>
     <string name="category_product_text">Categoria</string>
@@ -64,5 +65,10 @@
     <string name="empty_price_error">No existe una precio</string>
     <string name="under_0_price_error">Ingrese un precio mayor a 0</string>
 
+    <!-- MarketListActivity-->
+    <string name="type_hint">Tipo: </string>
+    <string name="direction_hint">Direccion: </string>
+    <string name="empty_type_error">No existe un tipo</string>
+    <string name="empty_direction_error">No existe una direccion</string>
 
 </resources>
