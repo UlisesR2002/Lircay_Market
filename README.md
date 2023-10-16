@@ -1,4 +1,9 @@
 # Lircay_Market
+![ic_launcher](https://github.com/UlisesR2002/Lircay_Market/assets/116087176/83fe5e22-8a65-4a89-adc3-1878491c4fba)
+
+
+
+
 Lircay Market es un programa desarrollado por Ulises Muñoz Romero, como proyecto para la Unidad 1 de la asignatura
 de Programacion para Dispositivos Mobiles 2023-3 de la Universidad de Talca
 
@@ -29,5 +34,7 @@ caso de que compartan el mismo nombre al crearlo, esto para optimizar tiempo de 
 Diagrama de clases:
 
 ![Diagrama sin título drawio](https://github.com/UlisesR2002/Lircay_Market/assets/116087176/a2d1c1ee-35a5-4633-925f-4e85f18906f2)
+
+
 
 
