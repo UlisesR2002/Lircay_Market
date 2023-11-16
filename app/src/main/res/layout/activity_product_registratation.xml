@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/squid_ink"
     android:orientation="vertical"
     android:padding="16dp"
     tools:context=".ProductRegistratationActivity">
@@ -15,7 +15,9 @@
         android:layout_height="wrap_content"
         android:hint="@string/name_product_text"
         android:inputType="textPersonName"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/hint_white" />
 
     <EditText
         android:id="@+id/editTextCategory"
@@ -23,14 +25,18 @@
         android:layout_height="wrap_content"
         android:hint="@string/category_product_text"
         android:inputType="textEmailAddress"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/hint_white" />
 
     <EditText
         android:id="@+id/editTextDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/description_product_text"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/hint_white" />
 
     <EditText
         android:id="@+id/editTextAmount"
@@ -38,7 +44,9 @@
         android:layout_height="wrap_content"
         android:hint="@string/amount_product_text"
         android:inputType="number"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/hint_white" />
 
     <!-- Add more UI elements for capturing symptoms if needed -->
 
@@ -51,12 +59,14 @@
             android:id="@+id/buttonSave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/soft_blue"
             android:text="@string/save_button" />
 
         <Button
             android:id="@+id/buttonCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/soft_blue"
             android:text="@string/cancel_button" />
 
     </LinearLayout>

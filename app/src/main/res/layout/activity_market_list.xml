@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/squid_ink"
     android:orientation="vertical"
     android:padding="16dp"
     tools:context=".MarketListActivity">
@@ -15,8 +16,9 @@
     <ListView
         android:id="@+id/listViewMarket"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1"
+        android:background="@color/transparent_grayish_blue"
         android:divider="@android:color/darker_gray"
         android:dividerHeight="1dp" />
 
@@ -31,8 +33,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/soft_blue"
             android:onClick="goCreateMarket"
-            android:text="@string/add_marketlist_button_text" />
+            android:text="@string/add_marketlist_button_text"
+            tools:ignore="TextContrastCheck" />
 
         <!--android:onClick="changeAdapter" -->
     </LinearLayout>

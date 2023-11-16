@@ -11,6 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/hint_white"
         android:orientation="vertical"
         android:padding="16dp">
 
@@ -20,18 +21,19 @@
             android:layout_height="wrap_content"
             android:text="Card Title"
             android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/cardTextViewDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Card Description"/>
+            android:text="Card Description" />
 
         <Button
             android:id="@+id/cardButtonNavigate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/squid_ink"
             android:text="Go to Another Activity" />
 
     </LinearLayout>

@@ -4,7 +4,12 @@
     <color name="white">#FFFFFFFF</color>
     <color name="green">#008000</color>
     <color name="red">#FF0000</color>
-    <color name="hint_white">#757575</color>
 
+
+    <!-- Colores del tema de aplicaciones -->
+    <color name="soft_blue">#63b5e5</color>
+    <color name="squid_ink">#32333f</color>
+    <color name="hint_white">#FFE6DFDF</color>
+    <color name="transparent_grayish_blue">#80CFCFD3</color>
 
 </resources>

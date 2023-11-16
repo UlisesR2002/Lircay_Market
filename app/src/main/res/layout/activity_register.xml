@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/soft_blue"
     tools:context=".Login.RegisterActivity">
 
     <TextView
@@ -15,6 +15,7 @@
         android:layout_marginBottom="15dp"
         android:text="@string/create_account_text"
         android:textAlignment="center"
+        android:textColor="@color/squid_ink"
         android:textSize="48sp"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,14 +25,15 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:layout_marginStart="105dp"
         android:layout_marginEnd="105dp"
+        android:layout_marginBottom="48dp"
         android:contentDescription="@string/image_descrition"
+        app:layout_constraintBottom_toTopOf="@+id/UsernameText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CreateAccountTextView"
         app:srcCompat="@drawable/ic_launcher_foreground"
         tools:ignore="ImageContrastCheck"
         tools:srcCompat="@drawable/ic_launcher_foreground" />
@@ -40,19 +42,19 @@
         android:id="@+id/UsernameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="40dp"
         android:autofillHints=""
         android:ems="15"
         android:hint="@string/username_text"
         android:inputType="text"
         android:minHeight="48dp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textColorHint="@color/hint_white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        tools:ignore="LabelFor,TextFields" />
+        tools:ignore="LabelFor,TextFields,TextContrastCheck" />
 
     <EditText
         android:id="@+id/EmailText"
@@ -63,12 +65,12 @@
         android:hint="@string/email_text"
         android:inputType="text|textEmailAddress"
         android:minHeight="48dp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textColorHint="@color/hint_white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/UsernameText"
-        tools:ignore="LabelFor,TextFields" />
+        tools:ignore="LabelFor,TextFields,TextContrastCheck" />
 
     <EditText
         android:id="@+id/PasswordText"
@@ -79,13 +81,13 @@
         android:hint="@string/password_text"
         android:inputType="text|textPassword"
         android:minHeight="48dp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textColorHint="@color/hint_white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EmailText"
-        tools:ignore="LabelFor" />
+        tools:ignore="LabelFor,TextContrastCheck" />
 
     <EditText
         android:id="@+id/RepeatPasswordText"
@@ -96,26 +98,29 @@
         android:hint="@string/repeat_password_text"
         android:inputType="text|textPassword"
         android:minHeight="48dp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textColorHint="@color/hint_white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PasswordText"
-        tools:ignore="LabelFor" />
+        tools:ignore="LabelFor,TextContrastCheck" />
 
     <Button
         android:id="@+id/CreateAccountButton"
         android:layout_width="190dp"
         android:layout_height="48dp"
         android:layout_marginStart="108dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="34dp"
         android:layout_marginEnd="108dp"
+        android:layout_marginBottom="12dp"
+        android:backgroundTint="@color/squid_ink"
         android:text="@string/create_account_text"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PasswordText"
+        app:layout_constraintTop_toBottomOf="@+id/RepeatPasswordText"
         tools:ignore="DuplicateSpeakableTextCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
