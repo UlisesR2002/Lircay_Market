@@ -19,7 +19,7 @@
             android:id="@+id/cardTextViewTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Card Title"
+            android:text="@string/Card_title"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -27,14 +27,14 @@
             android:id="@+id/cardTextViewDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Card Description" />
+            android:text="@string/Card_description" />
 
         <Button
             android:id="@+id/cardButtonNavigate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/squid_ink"
-            android:text="Go to Another Activity" />
+            android:text="@string/Card_button" />
 
     </LinearLayout>
 

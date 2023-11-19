@@ -49,6 +49,7 @@
     <string name="description_product_text">Descripcion</string>
     <string name="amount_product_text">Cantidad</string>
     <string name="price_product_text">Precio</string>
+    <string name="total_price_text">Precio total:</string>
     <string name="check_product_text">Articulo comprado</string>
 
     <string name="edit_descripcion_text">Boton para editar un producto</string>
@@ -71,4 +72,8 @@
     <string name="empty_type_error">No existe un tipo</string>
     <string name="empty_direction_error">No existe una direccion</string>
 
+    <!-- OptionCard / OptionContainer-->
+    <string name="Card_title">Nombre de la actividad</string>
+    <string name="Card_description">Descripcion de la actividad</string>
+    <string name="Card_button">Boton de la actividad</string>
 </resources>

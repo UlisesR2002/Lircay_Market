@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/squid_ink"
     android:orientation="vertical"
     android:padding="16dp"
     tools:context=".ShoppingListActivity">
@@ -22,14 +22,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="InefficientWeight,NestedWeights">
 
             <TextView
                 android:id="@+id/totalpriceText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Total price: "
+                android:text="@string/total_price_text"
+                android:textColor="@color/white"
                 android:textSize="20sp" />
 
         </LinearLayout>
@@ -40,8 +42,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/soft_blue"
             android:onClick="goCreateProduct"
-            android:text="@string/add_product_shoppinglist_button_text" />
+            android:text="@string/add_product_shoppinglist_button_text"
+            tools:ignore="TextContrastCheck" />
     </LinearLayout>
 
     <ListView
@@ -49,6 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="650dp"
         android:layout_weight="1"
+        android:background="@color/transparent_grayish_blue"
         android:divider="@android:color/darker_gray"
         android:dividerHeight="1dp">
 

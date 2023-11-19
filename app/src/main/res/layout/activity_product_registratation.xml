@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,7 +16,9 @@
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textColor="@color/white"
-        android:textColorHint="@color/hint_white" />
+        android:textColorHint="@color/hint_white"
+        android:importantForAutofill="no"
+        tools:ignore="VisualLintTextFieldSize" />
 
     <EditText
         android:id="@+id/editTextCategory"
@@ -27,7 +28,9 @@
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
         android:textColor="@color/white"
-        android:textColorHint="@color/hint_white" />
+        android:textColorHint="@color/hint_white"
+        android:importantForAutofill="no"
+        tools:ignore="VisualLintTextFieldSize" />
 
     <EditText
         android:id="@+id/editTextDescription"
@@ -36,7 +39,9 @@
         android:hint="@string/description_product_text"
         android:minHeight="48dp"
         android:textColor="@color/white"
-        android:textColorHint="@color/hint_white" />
+        android:textColorHint="@color/hint_white"
+        tools:ignore="TextFields,VisualLintTextFieldSize"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/editTextAmount"
@@ -46,7 +51,9 @@
         android:inputType="number"
         android:minHeight="48dp"
         android:textColor="@color/white"
-        android:textColorHint="@color/hint_white" />
+        android:textColorHint="@color/hint_white"
+        android:importantForAutofill="no"
+        tools:ignore="VisualLintTextFieldSize" />
 
     <!-- Add more UI elements for capturing symptoms if needed -->
 
@@ -60,14 +67,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/soft_blue"
-            android:text="@string/save_button" />
+            android:text="@string/save_button"
+            tools:ignore="ButtonStyle,TextContrastCheck" />
 
         <Button
             android:id="@+id/buttonCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/soft_blue"
-            android:text="@string/cancel_button" />
+            android:text="@string/cancel_button"
+            tools:ignore="ButtonStyle,TextContrastCheck" />
 
     </LinearLayout>
 
