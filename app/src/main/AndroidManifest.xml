@@ -19,9 +19,6 @@
             android:name=".MarketListActivity"
             android:exported="false" />
         <activity
-            android:name=".ProductDetailActivity"
-            android:exported="false" />
-        <activity
             android:name=".ProductShoppingListRegistrationActivity"
             android:exported="false" />
         <activity
