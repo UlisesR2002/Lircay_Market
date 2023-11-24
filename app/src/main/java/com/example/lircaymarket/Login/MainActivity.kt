@@ -17,6 +17,9 @@ import com.example.lircaymarket.entity.Pantry
 import com.example.lircaymarket.entity.Product
 import com.example.lircaymarket.entity.Shoppinglist
 import com.example.lircaymarket.entity.User
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 
 class MainActivity : AppCompatActivity() {
@@ -35,7 +38,31 @@ class MainActivity : AppCompatActivity() {
 
         val userEmail = intent.getStringExtra("useremail")
 
+
         textwelcome = findViewById(R.id.welcomeTextView)
+
+        val appDatabase = SaveData.getDatabase(applicationContext)
+        userDao = appDatabase.userDao()
+
+        GlobalScope.launch(Dispatchers.IO) {
+            // Buscar el usuario por email en la base de datos
+            val userFromDatabase = userDao.getUserByEmail(userEmail.orEmpty())
+
+            // Verificar si se encontró el usuario
+            if (userFromDatabase != null) {
+                // Configurar bienvenida después de obtener la información del usuario
+                bienvenida = "Bienvenid@ ${userFromDatabase.username}"
+
+                // Actualizar la UI en el hilo principal
+                runOnUiThread {
+                    textwelcome.text = bienvenida
+                }
+            } else {
+                // Manejar el caso de que el usuario no se encuentre en la base de datos
+                // Puedes mostrar un mensaje de error o tomar la acción apropiada
+            }
+        }
+
         textwelcome.setText(userEmail)
 
         val optioncard1View = findViewById<View>(R.id.card1)
