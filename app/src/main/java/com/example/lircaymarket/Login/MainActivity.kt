@@ -11,6 +11,7 @@ import com.example.lircaymarket.entity.SaveData
 import com.example.lircaymarket.PantryListActivity
 import com.example.lircaymarket.R
 import com.example.lircaymarket.ShoppingListActivity
+import com.example.lircaymarket.dao.UserDao
 import com.example.lircaymarket.entity.Market
 import com.example.lircaymarket.entity.Pantry
 import com.example.lircaymarket.entity.Product
@@ -21,8 +22,9 @@ import com.example.lircaymarket.entity.User
 class MainActivity : AppCompatActivity() {
 
     private lateinit var user: User
-    private lateinit var textwelcome : TextView
-    private lateinit var  bienvenida : String
+    private lateinit var userDao: UserDao
+    private lateinit var textwelcome: TextView
+    private lateinit var bienvenida: String
 
     companion object{
         const val REQUEST_REGISTER = 1
@@ -31,12 +33,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.optioncard_container)
 
-        user = intent.getParcelableExtra<User>("users")!!
-
-        bienvenida = "Bienvenid@ " + user.username
+        val userEmail = intent.getStringExtra("useremail")
 
         textwelcome = findViewById(R.id.welcomeTextView)
-        textwelcome.setText(bienvenida)
+        textwelcome.setText(userEmail)
 
         val optioncard1View = findViewById<View>(R.id.card1)
         val optioncard2View = findViewById<View>(R.id.card2)
@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         optioncard2View.findViewById<Button>(R.id.cardButtonNavigate).setText(R.string.optioncard2_button_text)
         optioncard3View.findViewById<Button>(R.id.cardButtonNavigate).setText(R.string.optioncard3_button_text)
 
-        if(SaveData.pantry.isEmpty()) {
+        /*if(SaveData.pantry.isEmpty()) {
             SaveData.pantry.add(
                 Pantry(
                     SaveData.pantry.size + 1,
@@ -134,7 +134,7 @@ class MainActivity : AppCompatActivity() {
                 )
 
         }
-
+        */
         optioncard1View.findViewById<TextView>(R.id.cardButtonNavigate).setOnClickListener{ view ->
             goPantryApp(view)
         }

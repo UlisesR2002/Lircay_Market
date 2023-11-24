@@ -9,7 +9,9 @@ import android.widget.Toast
 import com.example.lircaymarket.entity.SaveData
 import com.example.lircaymarket.R
 import com.example.lircaymarket.entity.User
-
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -17,10 +19,8 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var emailText: EditText
     private lateinit var passwordText: EditText
     private lateinit var repeatPasswordText: EditText
-    private lateinit var registerButton : Button
+    private lateinit var registerButton: Button
     private var emailUsed: Boolean = false
-
-    private var users = arrayListOf<User>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,48 +32,49 @@ class RegisterActivity : AppCompatActivity() {
         repeatPasswordText = findViewById(R.id.RepeatPasswordText)
         registerButton = findViewById(R.id.CreateAccountButton)
 
-        val users = SaveData.GetUsers()
+        val appDatabase = SaveData.getDatabase(applicationContext)
+        val userDao = appDatabase.userDao()
 
-        registerButton.setOnClickListener{
-
+        registerButton.setOnClickListener {
             val username = usernameText.text.toString()
             val email = emailText.text.toString()
             val password = passwordText.text.toString()
             val repeatpassword = repeatPasswordText.text.toString()
 
-
-
-            if(username == "")
-            {
+            if (username == "") {
                 Toast.makeText(this, R.string.empty_username_error, Toast.LENGTH_SHORT).show()
-            }else if(email == ""){
-
+            } else if (email == "") {
                 Toast.makeText(this, R.string.empty_email_error, Toast.LENGTH_SHORT).show()
-            }else if(password == ""){
-
+            } else if (password == "") {
                 Toast.makeText(this, R.string.empty_password_error, Toast.LENGTH_SHORT).show()
-            }else if(password != repeatpassword){
-
+            } else if (password != repeatpassword) {
                 Toast.makeText(this, R.string.repeat_password_error, Toast.LENGTH_SHORT).show()
-            }else{
+            } else {
                 emailUsed = false
 
-                for(i in users.indices)
-                {
-                    if(users[i].email == email)
-                    {
-                        Toast.makeText(this, R.string.email_used_error, Toast.LENGTH_SHORT).show()
-                        emailUsed = true
+                GlobalScope.launch(Dispatchers.IO) {
+                    val users = userDao.getAll()
+
+                    for (i in users.indices) {
+                        if (users[i].email == email) {
+                            launch(Dispatchers.Main) {
+                                Toast.makeText(this@RegisterActivity, R.string.email_used_error, Toast.LENGTH_SHORT).show()
+                            }
+                            emailUsed = true
+                        }
                     }
-                }
-                //val user = User(2,username.toString(),password.toString(),email.toString(),2)
-                if(!emailUsed) {
-                    val user = User(users.size + 1, username, password, email)
-                    println("user : ${user}")
-                    val resultIntent = Intent()
-                    resultIntent.putExtra("new", user)
-                    setResult(RESULT_OK, resultIntent)
-                    finish()
+
+                    if (!emailUsed) {
+                        val user = User(users.size + 1, username, password, email)
+                        userDao.insertAll(user)
+
+                        launch(Dispatchers.Main) {
+                            // Notificar el éxito y cerrar la actividad
+                            val resultIntent = Intent()
+                            setResult(RESULT_OK, resultIntent)
+                            finish()
+                        }
+                    }
                 }
             }
         }
