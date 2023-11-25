@@ -8,7 +8,6 @@ import com.example.lircaymarket.dao.ProductDao
 object SaveData {
     private var appDatabase: AppDatabase? = null
     var Market = arrayListOf<Market>()
-    var pantry = arrayListOf<Pantry>()
     var shoppinglist = arrayListOf<Shoppinglist>()
 
     private var _productDao: ProductDao? = null

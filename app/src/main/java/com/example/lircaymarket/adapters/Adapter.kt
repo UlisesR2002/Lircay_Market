@@ -1,28 +1,37 @@
 package com.example.lircaymarket.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import com.example.lircaymarket.ProductRegistratationActivity
 import com.example.lircaymarket.R
 import com.example.lircaymarket.entity.Market
 import com.example.lircaymarket.entity.Pantry
+import com.example.lircaymarket.entity.Product
 import com.example.lircaymarket.entity.Shoppinglist
+
+interface ProductEditListener {
+    fun onEditProduct(productid: Int)
+}
 
 class ProductPantryListAdapter(
     context: Context,
     resource: Int,
-    products: List<Pantry>,
-) : ArrayAdapter<Pantry>(context, resource, products) {
+    products: List<Product>,
+    val pantryId: Int,
+    val editListener: ProductEditListener
+) : ArrayAdapter<Product>(context, resource, products.filter { it.pantryId == pantryId }) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val listItemView = convertView ?: inflater.inflate(R.layout.list_item_pantry_product, null)
 
         // Get the patient data at the current position
-        val pantry = getItem(position)
+        val product = getItem(position)
 
         // Bind patient data to TextViews in the custom layout
         val nameTextView = listItemView.findViewById<TextView>(R.id.textViewName)
@@ -31,19 +40,26 @@ class ProductPantryListAdapter(
         val amountTextView = listItemView.findViewById<TextView>(R.id.textViewAmount)
 
 
-        /*if(pantry?.product != null) {
-            nameTextView.text = pantry?.product?.productname
-            categoryTextView.text = "Categoria: " + pantry?.product?.productcategory
-            descriptionTextView.text = "Descripcion: " + pantry?.product?.productdescription
-            amountTextView.text = "Cantidad: " + pantry?.product?.productamount.toString()
-        }
-        else{
+        if (product != null && product.pantryId == pantryId) {
+            nameTextView.text = product.productname
+            categoryTextView.text = "Categoria: " + product.productcategory
+            descriptionTextView.text = "Descripcion: " + product.productdescription
+            amountTextView.text = "Cantidad: " + product.productamount.toString()
+        } else {
             nameTextView.text = "Nombre:"
             categoryTextView.text = "Categoria:"
             descriptionTextView.text = "Descripcion:"
             amountTextView.text = "Cantidad:"
-        }*/
+        }
+
+        listItemView.setOnClickListener {
+            product?.let { editListener.onEditProduct(it.productid) }
+        }
         return listItemView
+    }
+
+    fun goEditProduct(productid: Int) {
+
     }
 }
 

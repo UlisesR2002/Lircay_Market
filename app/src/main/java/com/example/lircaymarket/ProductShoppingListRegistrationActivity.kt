@@ -132,7 +132,7 @@ class ProductShoppingListRegistrationActivity : AppCompatActivity() {
                 Shoppinglist(
                     SaveData.shoppinglist[1].shoppinglistid,
                     Product(
-                        SaveData.pantry.size + 1,
+                        1,
                         name,
                         amount.toInt(),
                         description,

@@ -18,7 +18,7 @@ interface PantryDao {
     @Query("SELECT * FROM pantry WHERE user_id = :userid")
     fun getPantryByUserID(userid: Int): Pantry?
     @Insert
-    fun insertAll(vararg users: Pantry)
+    fun insertAll(vararg pantries: Pantry)
 
     @Delete
     fun delete(pantry: Pantry)
