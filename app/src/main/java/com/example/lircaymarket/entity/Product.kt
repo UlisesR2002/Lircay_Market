@@ -1,7 +1,5 @@
 package com.example.lircaymarket.entity
 
-import android.os.Parcel
-import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
@@ -13,6 +11,12 @@ import androidx.room.PrimaryKey
             parentColumns = ["pantryid"],
             childColumns = ["pantry_id"],
             onDelete = ForeignKey.CASCADE
+        ),
+        ForeignKey(
+            entity = Shoppinglist::class,
+            parentColumns = ["shoppinglistid"],
+            childColumns = ["shoppinglist_id"],
+            onDelete = ForeignKey.CASCADE
         )
     ]
 )
@@ -23,5 +27,6 @@ data class Product(
     @ColumnInfo(name = "productdescription") var productdescription: String?,
     @ColumnInfo(name = "productcategory") var productcategory: String?,
     @ColumnInfo(name = "productprice") var productprice: Int,
-    @ColumnInfo(name = "pantry_id") var pantryId: Int?
+    @ColumnInfo(name = "pantry_id") var pantryid: Int?,
+    @ColumnInfo(name = "shoppinglist_id") var shoppinglistid: Int?
 )

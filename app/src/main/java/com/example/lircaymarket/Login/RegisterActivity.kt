@@ -9,6 +9,7 @@ import android.widget.Toast
 import com.example.lircaymarket.entity.SaveData
 import com.example.lircaymarket.R
 import com.example.lircaymarket.entity.Pantry
+import com.example.lircaymarket.entity.Shoppinglist
 import com.example.lircaymarket.entity.User
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -36,6 +37,7 @@ class RegisterActivity : AppCompatActivity() {
         val appDatabase = SaveData.getDatabase(applicationContext)
         val userDao = appDatabase.userDao()
         val pantryDao = appDatabase.pantryDao()
+        val shoppinglistDao = appDatabase.shoppinglistDao()
 
         registerButton.setOnClickListener {
             val username = usernameText.text.toString()
@@ -57,6 +59,7 @@ class RegisterActivity : AppCompatActivity() {
                 GlobalScope.launch(Dispatchers.IO) {
                     val users = userDao.getAll()
                     val pantries = pantryDao.getAll()
+                    val shoppinglists = shoppinglistDao.getAll()
                     for (i in users.indices) {
                         if (users[i].email == email) {
                             launch(Dispatchers.Main) {
@@ -69,8 +72,10 @@ class RegisterActivity : AppCompatActivity() {
                     if (!emailUsed) {
                         val user = User(users.size + 1, username, password, email)
                         val pantry = Pantry(pantries.size + 1, users.size + 1)
+                        val shoppinlist = Shoppinglist(shoppinglists.size + 1, users.size + 1)
                         userDao.insertAll(user)
                         pantryDao.insertAll(pantry)
+                        shoppinglistDao.insertAll(shoppinlist)
 
                         launch(Dispatchers.Main) {
                             // Notificar el éxito y cerrar la actividad

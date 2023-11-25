@@ -24,7 +24,7 @@ class ProductPantryListAdapter(
     products: List<Product>,
     val pantryId: Int,
     val editListener: ProductEditListener
-) : ArrayAdapter<Product>(context, resource, products.filter { it.pantryId == pantryId }) {
+) : ArrayAdapter<Product>(context, resource, products.filter { it.pantryid == pantryId }) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -40,7 +40,7 @@ class ProductPantryListAdapter(
         val amountTextView = listItemView.findViewById<TextView>(R.id.textViewAmount)
 
 
-        if (product != null && product.pantryId == pantryId) {
+        if (product != null && product.pantryid == pantryId) {
             nameTextView.text = product.productname
             categoryTextView.text = "Categoria: " + product.productcategory
             descriptionTextView.text = "Descripcion: " + product.productdescription
@@ -63,21 +63,22 @@ class ProductPantryListAdapter(
     }
 }
 
+
 class ProductShoppingListAdapter(
     context: Context,
     resource: Int,
-    products: List<Shoppinglist>,
-) : ArrayAdapter<Shoppinglist>(context, resource, products) {
-    companion object{
-        const val REQUEST_REGISTER = 1
-    }
+    products: List<Product>,
+    val shoppinglistId : Int,
+    val editListener: ProductEditListener
+    //Cambiar pantryID
+) : ArrayAdapter<Product>(context, resource, products.filter { it.shoppinglistid == shoppinglistId }) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val listItemView = convertView ?: inflater.inflate(R.layout.list_item_shoppinglist_product, null)
 
         // Get the patient data at the current position
-        val shoppinglist = getItem(position)
+        val product = getItem(position)
 
         // Bind patient data to TextViews in the custom layout
         val nameTextView = listItemView.findViewById<TextView>(R.id.textViewName)
@@ -87,12 +88,12 @@ class ProductShoppingListAdapter(
         val priceTextView = listItemView.findViewById<TextView>(R.id.textViewPrice)
 
 
-        if(shoppinglist?.product != null) {
-            nameTextView.text = shoppinglist?.product?.productname
-            categoryTextView.text = "Categoria: " + shoppinglist?.product?.productcategory
-            descriptionTextView.text = "Descripcion: " + shoppinglist?.product?.productdescription
-            amountTextView.text = "Cantidad: " + shoppinglist?.product?.productamount.toString()
-            priceTextView.text = "Precio: $" + shoppinglist?.product?.productprice.toString()
+        if(product != null && product.shoppinglistid == shoppinglistId) {
+            nameTextView.text = product.productname
+            categoryTextView.text = "Categoria: " + product.productcategory
+            descriptionTextView.text = "Descripcion: " + product.productdescription
+            amountTextView.text = "Cantidad: " + product.productamount.toString()
+            priceTextView.text = "Precio: $" + product.productprice.toString()
         }else{
             nameTextView.text = "Nombre:"
             categoryTextView.text = "Categoria:"
@@ -100,8 +101,13 @@ class ProductShoppingListAdapter(
             amountTextView.text = "Cantidad:"
             priceTextView.text = "Precio: $"
         }
-
+        listItemView.setOnClickListener {
+            product?.let { editListener.onEditProduct(it.productid) }
+        }
         return listItemView
+    }
+    fun goEditProduct(productid: Int) {
+
     }
 }
 

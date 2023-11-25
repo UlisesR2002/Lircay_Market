@@ -8,7 +8,6 @@ import android.widget.Toast
 import com.example.lircaymarket.entity.SaveData
 import com.example.lircaymarket.entity.Pantry
 import com.example.lircaymarket.entity.Product
-import com.example.lircaymarket.entity.User
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -17,7 +16,6 @@ import kotlinx.coroutines.launch
 class ProductRegistratationActivity : AppCompatActivity() {
 
     private var userid: Int = 0
-    private lateinit var user: User
     private lateinit var pantry: Pantry
     private lateinit var nameText: EditText
     private lateinit var categoryText: EditText
@@ -63,8 +61,8 @@ class ProductRegistratationActivity : AppCompatActivity() {
                     onDeleteProduct()
                 }
             }
-        }
-        else {
+        }else{
+
             SaveProductButton.setOnClickListener {
                 onCreateProduct()
             }
@@ -73,10 +71,6 @@ class ProductRegistratationActivity : AppCompatActivity() {
                 finish()
             }
         }
-    }
-
-    override fun onContentChanged() {
-        super.onContentChanged()
     }
 
     fun onCreateProduct(){
@@ -105,7 +99,7 @@ class ProductRegistratationActivity : AppCompatActivity() {
             GlobalScope.launch(Dispatchers.IO) {
                 val products = appDatabase.productDao().getAll()
                 pantry = appDatabase.pantryDao().getPantryByUserID(userid)!!
-                val product = Product(products.size + 1, name, amount.toInt(), description, category, 0,pantry.pantryid)
+                val product = Product(products.size + 1, name, amount.toInt(), description, category, 0,pantry.pantryid, null)
                 appDatabase.productDao().insertAll(product)
                 println(product)
             }

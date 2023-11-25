@@ -5,7 +5,6 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.lircaymarket.entity.Pantry
-import com.example.lircaymarket.entity.User
 
 @Dao
 interface PantryDao {

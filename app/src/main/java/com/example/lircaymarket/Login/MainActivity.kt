@@ -82,87 +82,7 @@ class MainActivity : AppCompatActivity() {
         optioncard2View.findViewById<Button>(R.id.cardButtonNavigate).setText(R.string.optioncard2_button_text)
         optioncard3View.findViewById<Button>(R.id.cardButtonNavigate).setText(R.string.optioncard3_button_text)
 
-        /*if(SaveData.pantry.isEmpty()) {
-            SaveData.pantry.add(
-                Pantry(
-                    SaveData.pantry.size + 1,
-                    Product(
-                        SaveData.pantry.size + 1,
-                        "Ravioli carne",
-                        1,
-                        "Paquete de 400 gramos de pasta rellena de marca carrozi",
-                        "Alimento",
-                        0
-                    )
-                )
-            )
 
-            SaveData.pantry.add(
-                Pantry(
-                    SaveData.pantry.size + 1,
-                    Product(
-                        SaveData.pantry.size + 1,
-                        "Coca-cola",
-                        1,
-                        "Botella de 2 litros de bebida marca coca-cola",
-                        "Alimento",
-                        0
-                    )
-                )
-            )
-        }
-
-        if(SaveData.shoppinglist.isEmpty()) {
-            SaveData.shoppinglist.add(
-                Shoppinglist(
-                    SaveData.shoppinglist.size + 1,
-                    Product(SaveData.shoppinglist.size + 1,
-                        "Leche",
-                        1,
-                        "Caja de un litro de leche de marca colun",
-                        "Alimento",
-                        1000
-                    )
-                )
-            )
-
-            SaveData.shoppinglist.add(
-                Shoppinglist(
-                    SaveData.shoppinglist.size + 1,
-                    Product(
-                        SaveData.shoppinglist.size + 1,
-                        "Hamburguesa",
-                        5,
-                        "Paquete de hamburguesa individual de marca pf",
-                        "Alimento",
-                        200
-                    )
-                )
-            )
-        }
-
-        if(SaveData.Market.isEmpty()) {
-            SaveData.Market.add(
-                Market(
-                    SaveData.Market.size + 1,
-                    "Unimarc",
-                    "Supermercado",
-                    "Cinco Norte 3615"
-                    )
-                )
-
-
-            SaveData.Market.add(
-                Market(
-                        SaveData.Market.size + 1,
-                        "Lider Talca",
-                        "Supermercado",
-                        "Dos Norte 1422"
-                    )
-                )
-
-        }
-        */
         optioncard1View.findViewById<TextView>(R.id.cardButtonNavigate).setOnClickListener{ view ->
             goPantryApp(view)
         }
@@ -186,6 +106,7 @@ class MainActivity : AppCompatActivity() {
 
     fun goShoppinglistApp(view: View){
         val intentShoppingList = Intent(this, ShoppingListActivity::class.java)
+        intentShoppingList.putExtra("userid",user.userid)
         startActivity(intentShoppingList)
     }
 
