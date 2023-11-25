@@ -58,11 +58,11 @@ class ProductRegistratationActivity : AppCompatActivity() {
                 override fun afterTextChanged(p0: Editable?) {
                     for (i in SaveData.pantry.indices) {
 
-                        if (SaveData.pantry[i].product?.productname.toString() == nameText.editableText.toString()) {
+                        /*if (SaveData.pantry[i].product?.productname.toString() == nameText.editableText.toString()) {
                             categoryText.setText(SaveData.pantry[i].product?.productcategory.toString())
                             descriptionText.setText(SaveData.pantry[i].product?.productdescription.toString())
                             amountText.setText(SaveData.pantry[i].product?.productamount.toString())
-                        }
+                        }*/
                     }
                 }
 
@@ -76,10 +76,11 @@ class ProductRegistratationActivity : AppCompatActivity() {
                 finish()
             }
         }else{
-            nameText.setText(editProduct?.product?.productname)
+            /*nameText.setText(editProduct?.product?.productname)
             categoryText.setText(editProduct?.product?.productcategory.toString())
             descriptionText.setText(editProduct?.product?.productdescription.toString())
             amountText.setText(editProduct?.product?.productamount.toString())
+            */
             SaveProductButton.setOnClickListener {
                 onEditProduct()
             }
@@ -117,6 +118,7 @@ class ProductRegistratationActivity : AppCompatActivity() {
 
             Toast.makeText(this, R.string.under_0_amount_error, Toast.LENGTH_SHORT).show()
         }else {
+            /*
             SaveData.pantry.add(
                 Pantry(
                     SaveData.pantry[1].pantryid,
@@ -130,6 +132,7 @@ class ProductRegistratationActivity : AppCompatActivity() {
                     )
                 )
             )
+            */
             finish()
         }
     }
@@ -140,10 +143,10 @@ class ProductRegistratationActivity : AppCompatActivity() {
         val description = descriptionText.text.toString()
         val amount = amountText.text.toString()
 
-        editProduct?.product?.productname = name
-        editProduct?.product?.productcategory = category
-        editProduct?.product?.productdescription = description
-        editProduct?.product?.productamount = amount.toInt()
+        //editProduct?.product?.productname = name
+        //editProduct?.product?.productcategory = category
+        //editProduct?.product?.productdescription = description
+        //editProduct?.product?.productamount = amount.toInt()
 
         finish()
     }

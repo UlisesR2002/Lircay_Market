@@ -5,34 +5,21 @@ import android.os.Parcelable
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.ForeignKey
+import androidx.room.Index
 import androidx.room.PrimaryKey
 
+@Entity(
+    tableName = "pantry",
+    foreignKeys = [ForeignKey(
+        entity = User::class,
+        parentColumns = ["userid"],
+        childColumns = ["user_id"],
+        onDelete = ForeignKey.CASCADE
+    )],
+    indices = [Index("user_id")]
+)
 data class Pantry(
-    val pantryid: Int,
-    var product: Product?
-
-) : Parcelable {
-    constructor(parcel: Parcel) : this(
-        parcel.readInt(),
-        parcel.readParcelable(Product::class.java.classLoader)
-    )
-
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeInt(pantryid)
-        //parcel.writeParcelable(product, flags)
-    }
-
-    override fun describeContents(): Int {
-        return 0
-    }
-
-    companion object CREATOR : Parcelable.Creator<Pantry> {
-        override fun createFromParcel(parcel: Parcel): Pantry {
-            return Pantry(parcel)
-        }
-
-        override fun newArray(size: Int): Array<Pantry?> {
-            return arrayOfNulls(size)
-        }
-    }
-}
+    @PrimaryKey(autoGenerate = true) val pantryid: Int,
+    @ColumnInfo(name = "user_id") val userId: Int
+)
