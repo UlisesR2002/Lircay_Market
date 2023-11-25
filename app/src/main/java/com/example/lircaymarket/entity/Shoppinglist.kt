@@ -18,7 +18,7 @@ data class Shoppinglist(
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(shoppinglistid)
-        parcel.writeParcelable(product, flags)
+        //parcel.writeParcelable(product, flags)
     }
 
     override fun describeContents(): Int {

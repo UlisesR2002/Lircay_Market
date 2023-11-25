@@ -19,7 +19,7 @@ data class Pantry(
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(pantryid)
-        parcel.writeParcelable(product, flags)
+        //parcel.writeParcelable(product, flags)
     }
 
     override fun describeContents(): Int {

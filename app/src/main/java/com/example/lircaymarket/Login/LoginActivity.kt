@@ -13,7 +13,6 @@ import android.widget.EditText
 import android.widget.Toast
 import com.example.lircaymarket.R
 import com.example.lircaymarket.entity.SaveData
-
 import com.example.lircaymarket.entity.User
 
 class LoginActivity : AppCompatActivity() {
