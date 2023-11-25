@@ -31,7 +31,7 @@ class ProductPantryListAdapter(
         val amountTextView = listItemView.findViewById<TextView>(R.id.textViewAmount)
 
 
-        if(pantry?.product != null) {
+        /*if(pantry?.product != null) {
             nameTextView.text = pantry?.product?.productname
             categoryTextView.text = "Categoria: " + pantry?.product?.productcategory
             descriptionTextView.text = "Descripcion: " + pantry?.product?.productdescription
@@ -42,7 +42,7 @@ class ProductPantryListAdapter(
             categoryTextView.text = "Categoria:"
             descriptionTextView.text = "Descripcion:"
             amountTextView.text = "Cantidad:"
-        }
+        }*/
         return listItemView
     }
 }
