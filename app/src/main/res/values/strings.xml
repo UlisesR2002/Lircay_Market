@@ -27,19 +27,20 @@
     <string name="welcome_user_text">Bienvenid@ </string>
     <string name="optioncard1_title_text">Lista de la despensa</string>
     <string name="optioncard2_title_text">Lista de la compra</string>
-    <string name="optioncard3_title_text">Lugares de interes para comprar</string>
+    <string name="optioncard3_title_text">Historial de movimientos</string>
     <string name="optioncard1_description_text">Accede a tu lista de despensa personal</string>
     <string name="optioncard2_description_text">Accede a tu lista de compra personal y calcula cuanto gastaras en tus compras</string>
-    <string name="optioncard3_description_text">Accede a tus lugares de compras guardados o visitados con frecuencias</string>
+    <string name="optioncard3_description_text">Accede a al historial de tus ultimos movimientos</string>
     <string name="optioncard1_button_text">Abrir lista de la despensa</string>
     <string name="optioncard2_button_text">Abrir lista de la compra</string>
-    <string name="optioncard3_button_text">Ver los lugares de interes</string>
+    <string name="optioncard3_button_text">Abrir historial de movimiento</string>
 
 
     <!-- PantryListActivity/ShoppingListActivity-->
     <string name="product_category_text">Categoria: </string>
     <string name="product_decription_text">Decripcion: </string>
     <string name="product_amount_text">Cantidad: </string>
+    <string name="product_price_text">Precio: </string>
     <string name="add_product_pantry_button_text">Agregar producto a la despensa</string>
     <string name="add_product_shoppinglist_button_text">Agregar producto</string>
     <string name="add_marketlist_button_text">Agregar tiendas a la lista</string>

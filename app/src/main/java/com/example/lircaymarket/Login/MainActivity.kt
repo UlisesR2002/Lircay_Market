@@ -6,16 +6,11 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.lircaymarket.MarketListActivity
 import com.example.lircaymarket.entity.SaveData
 import com.example.lircaymarket.PantryListActivity
 import com.example.lircaymarket.R
 import com.example.lircaymarket.ShoppingListActivity
 import com.example.lircaymarket.dao.UserDao
-import com.example.lircaymarket.entity.Market
-import com.example.lircaymarket.entity.Pantry
-import com.example.lircaymarket.entity.Product
-import com.example.lircaymarket.entity.Shoppinglist
 import com.example.lircaymarket.entity.User
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -58,9 +53,6 @@ class MainActivity : AppCompatActivity() {
                 runOnUiThread {
                     textwelcome.text = bienvenida
                 }
-            } else {
-                // Manejar el caso de que el usuario no se encuentre en la base de datos
-                // Puedes mostrar un mensaje de error o tomar la acción apropiada
             }
         }
 
@@ -92,7 +84,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         optioncard3View.findViewById<TextView>(R.id.cardButtonNavigate).setOnClickListener{ view ->
-            goMarketApp(view)
+
         }
 
 
@@ -110,8 +102,4 @@ class MainActivity : AppCompatActivity() {
         startActivity(intentShoppingList)
     }
 
-    fun goMarketApp(view: View){
-        val intentMarketList = Intent(this, MarketListActivity::class.java)
-        startActivity(intentMarketList)
-    }
 }

@@ -1,18 +1,14 @@
 package com.example.lircaymarket.adapters
 
+import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
-import com.example.lircaymarket.ProductRegistratationActivity
 import com.example.lircaymarket.R
-import com.example.lircaymarket.entity.Market
-import com.example.lircaymarket.entity.Pantry
 import com.example.lircaymarket.entity.Product
-import com.example.lircaymarket.entity.Shoppinglist
 
 interface ProductEditListener {
     fun onEditProduct(productid: Int)
@@ -22,10 +18,11 @@ class ProductPantryListAdapter(
     context: Context,
     resource: Int,
     products: List<Product>,
-    val pantryId: Int,
-    val editListener: ProductEditListener
+    private val pantryId: Int,
+    private val editListener: ProductEditListener
 ) : ArrayAdapter<Product>(context, resource, products.filter { it.pantryid == pantryId }) {
 
+    @SuppressLint("SetTextI18n")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val listItemView = convertView ?: inflater.inflate(R.layout.list_item_pantry_product, null)
@@ -42,24 +39,21 @@ class ProductPantryListAdapter(
 
         if (product != null && product.pantryid == pantryId) {
             nameTextView.text = product.productname
-            categoryTextView.text = "Categoria: " + product.productcategory
-            descriptionTextView.text = "Descripcion: " + product.productdescription
-            amountTextView.text = "Cantidad: " + product.productamount.toString()
-        } else {
-            nameTextView.text = "Nombre:"
-            categoryTextView.text = "Categoria:"
-            descriptionTextView.text = "Descripcion:"
-            amountTextView.text = "Cantidad:"
+
+            val categoryText = context.getString(R.string.product_category_text)
+            categoryTextView.text = "$categoryText ${product.productcategory}"
+
+            val descriptionText = context.getString(R.string.product_decription_text)
+            descriptionTextView.text = "$descriptionText ${product.productdescription}"
+
+            val amountText = context.getString(R.string.product_amount_text)
+            amountTextView.text = "$amountText ${product.productamount}"
         }
 
         listItemView.setOnClickListener {
             product?.let { editListener.onEditProduct(it.productid) }
         }
         return listItemView
-    }
-
-    fun goEditProduct(productid: Int) {
-
     }
 }
 
@@ -70,7 +64,8 @@ class ProductShoppingListAdapter(
     products: List<Product>,
     val shoppinglistId : Int,
     val editListener: ProductEditListener
-    //Cambiar pantryID
+
+//Cambiar pantryID
 ) : ArrayAdapter<Product>(context, resource, products.filter { it.shoppinglistid == shoppinglistId }) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
@@ -90,59 +85,21 @@ class ProductShoppingListAdapter(
 
         if(product != null && product.shoppinglistid == shoppinglistId) {
             nameTextView.text = product.productname
-            categoryTextView.text = "Categoria: " + product.productcategory
-            descriptionTextView.text = "Descripcion: " + product.productdescription
-            amountTextView.text = "Cantidad: " + product.productamount.toString()
-            priceTextView.text = "Precio: $" + product.productprice.toString()
-        }else{
-            nameTextView.text = "Nombre:"
-            categoryTextView.text = "Categoria:"
-            descriptionTextView.text = "Descripcion:"
-            amountTextView.text = "Cantidad:"
-            priceTextView.text = "Precio: $"
+            val categoryText = context.getString(R.string.product_category_text)
+            categoryTextView.text = "$categoryText ${product.productcategory}"
+
+            val descriptionText = context.getString(R.string.product_decription_text)
+            descriptionTextView.text = "$descriptionText ${product.productdescription}"
+
+            val amountText = context.getString(R.string.product_amount_text)
+            amountTextView.text = "$amountText ${product.productamount}"
+
+            val priceText = context.getString(R.string.product_price_text)
+            priceTextView.text = "$priceText ${product.productprice}"
         }
         listItemView.setOnClickListener {
             product?.let { editListener.onEditProduct(it.productid) }
         }
-        return listItemView
-    }
-    fun goEditProduct(productid: Int) {
-
-    }
-}
-
-class MarketListAdapter(
-    context: Context,
-    resource: Int,
-    markets: List<Market>,
-) : ArrayAdapter<Market>(context, resource, markets) {
-    companion object{
-        const val REQUEST_REGISTER = 1
-    }
-
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val listItemView = convertView ?: inflater.inflate(R.layout.list_item_market, null)
-
-        // Get the patient data at the current position
-        val markets = getItem(position)
-
-        // Bind patient data to TextViews in the custom layout
-        val nameTextView = listItemView.findViewById<TextView>(R.id.textViewName)
-        val typeTextView = listItemView.findViewById<TextView>(R.id.textViewType)
-        val directionTextView = listItemView.findViewById<TextView>(R.id.textViewDirection)
-
-
-        if(markets != null) {
-            nameTextView.text = markets.marketname
-            typeTextView.text = "Tipo: " + markets.markettype
-            directionTextView.text = "Direccion: " + markets.marketdirection
-        }else{
-            nameTextView.text = "Nombre:"
-            typeTextView.text = "Tipo:"
-            directionTextView.text = "Direccion:"
-        }
-
         return listItemView
     }
 }
