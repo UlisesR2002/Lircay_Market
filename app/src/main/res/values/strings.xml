@@ -24,7 +24,7 @@
     <string name="email_used_error">Este correo ya esta utilizado</string>
 
     <!-- MainActivity -->
-    <string name="welcome_user_text">Bienvenido</string>
+    <string name="welcome_user_text">Bienvenid@ </string>
     <string name="optioncard1_title_text">Lista de la despensa</string>
     <string name="optioncard2_title_text">Lista de la compra</string>
     <string name="optioncard3_title_text">Lugares de interes para comprar</string>

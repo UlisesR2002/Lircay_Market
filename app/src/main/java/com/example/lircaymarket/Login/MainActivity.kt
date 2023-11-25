@@ -51,7 +51,8 @@ class MainActivity : AppCompatActivity() {
             // Verificar si se encontró el usuario
             if (userFromDatabase != null) {
                 // Configurar bienvenida después de obtener la información del usuario
-                bienvenida = "Bienvenid@ ${userFromDatabase.username}"
+                val welcometext = getString(R.string.welcome_user_text)
+                bienvenida = welcometext + " " + userFromDatabase.username
 
                 // Actualizar la UI en el hilo principal
                 runOnUiThread {
