@@ -7,13 +7,21 @@ import android.widget.Button
 import android.widget.EditText
 import android.text.Editable
 import android.widget.Toast
+import androidx.room.Database
 import com.example.lircaymarket.entity.SaveData
 import com.example.lircaymarket.entity.Pantry
 import com.example.lircaymarket.entity.Product
+import com.example.lircaymarket.entity.User
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 
 class ProductRegistratationActivity : AppCompatActivity() {
 
+    private var userid: Int = 0
+    private lateinit var user: User
+    private lateinit var pantry: Pantry
     private lateinit var nameText: EditText
     private lateinit var categoryText: EditText
     private lateinit var descriptionText: EditText
@@ -26,6 +34,10 @@ class ProductRegistratationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_registratation)
+
+
+        userid = intent.getIntExtra("userid",0)
+
 
         nameText = findViewById(R.id.editTextName)
         categoryText = findViewById(R.id.editTextCategory)
@@ -96,7 +108,7 @@ class ProductRegistratationActivity : AppCompatActivity() {
     }
 
     fun onCreateProduct(){
-
+        val appDatabase = SaveData.getDatabase(applicationContext)
         val name = nameText.text.toString()
         val category = categoryText.text.toString()
         val description = descriptionText.text.toString()
@@ -118,6 +130,14 @@ class ProductRegistratationActivity : AppCompatActivity() {
 
             Toast.makeText(this, R.string.under_0_amount_error, Toast.LENGTH_SHORT).show()
         }else {
+            GlobalScope.launch(Dispatchers.IO) {
+                val products = appDatabase.productDao().getAll()
+                pantry = appDatabase.pantryDao().getPantryByUserID(userid)!!
+                val product = Product(products.size + 1, name, amount.toInt(), description, category, 0,pantry.pantryid)
+                appDatabase.productDao().insertAll(product)
+                println(product)
+            }
+
             /*
             SaveData.pantry.add(
                 Pantry(

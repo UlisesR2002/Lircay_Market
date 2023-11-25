@@ -137,7 +137,7 @@ class ProductShoppingListRegistrationActivity : AppCompatActivity() {
                         amount.toInt(),
                         description,
                         category,
-                        price.toInt()
+                        price.toInt(), 1
 
                     )
                 )

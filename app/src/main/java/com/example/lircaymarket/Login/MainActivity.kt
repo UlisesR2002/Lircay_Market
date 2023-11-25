@@ -46,13 +46,13 @@ class MainActivity : AppCompatActivity() {
 
         GlobalScope.launch(Dispatchers.IO) {
             // Buscar el usuario por email en la base de datos
-            val userFromDatabase = userDao.getUserByEmail(userEmail.orEmpty())
+            user = userDao.getUserByEmail(userEmail.orEmpty())!!
 
             // Verificar si se encontró el usuario
-            if (userFromDatabase != null) {
+            if (user != null) {
                 // Configurar bienvenida después de obtener la información del usuario
                 val welcometext = getString(R.string.welcome_user_text)
-                bienvenida = welcometext + " " + userFromDatabase.username
+                bienvenida = welcometext + " " + user.username
 
                 // Actualizar la UI en el hilo principal
                 runOnUiThread {
@@ -180,6 +180,7 @@ class MainActivity : AppCompatActivity() {
 
     fun goPantryApp(view: View){
         val intentPantryList = Intent(this, PantryListActivity::class.java)
+        intentPantryList.putExtra("userid",user.userid)
         startActivity(intentPantryList)
     }
 

@@ -12,6 +12,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.lircaymarket.R
+import com.example.lircaymarket.entity.Pantry
 import com.example.lircaymarket.entity.SaveData
 import com.example.lircaymarket.entity.User
 
@@ -52,6 +53,10 @@ class LoginActivity : AppCompatActivity() {
                 GlobalScope.launch(Dispatchers.IO)
                 {
                     val users: List<User> = userDao.getAll()
+                    println(users)
+
+                    val pantries: List<Pantry> = appDatabase.pantryDao().getAll()
+                    println(pantries)
 
                     for (i in users.indices) {
                         if (users[i].email == email && users[i].password == password) {

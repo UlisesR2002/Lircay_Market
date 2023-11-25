@@ -7,14 +7,18 @@ import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.lircaymarket.adapters.ProductPantryListAdapter
 import com.example.lircaymarket.entity.SaveData
+import com.example.lircaymarket.entity.User
 
 class PantryListActivity : AppCompatActivity() {
 
     private lateinit var listViewProducts: ListView
+    private var userid: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pantry_list)
+
+        userid = intent.getIntExtra("userid",0)
 
         listViewProducts = findViewById(R.id.listViewProducts)
 
@@ -33,6 +37,7 @@ class PantryListActivity : AppCompatActivity() {
     }
     fun goCreateProduct(view: View) {
         val intent = Intent(this, ProductRegistratationActivity::class.java)
+        intent.putExtra("userid",userid)
         startActivity(intent)
     }
 
