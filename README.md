@@ -32,9 +32,9 @@ Requerimientos:
 
 
 
-Diagrama de clases:
+Diagrama de clases de la base datos:
 
-![Diagrama de base de datos](https://github.com/UlisesR2002/Lircay_Market/assets/116087176/a59a94c6-feb1-4fe5-9e64-94cea4d6e227)
+![Diagrama de base de datos drawio](https://github.com/UlisesR2002/Lircay_Market/assets/116087176/2bebea42-f1b0-486e-8520-0b354c4417e2)
 
 
 Presentación:
