@@ -37,6 +37,7 @@ Diagrama de clases de la base datos:
 ![Diagrama de base de datos drawio](https://github.com/UlisesR2002/Lircay_Market/assets/116087176/2bebea42-f1b0-486e-8520-0b354c4417e2)
 
 Ejecutable:
+
 https://drive.google.com/file/d/15ZyjJSxPMvyGgbI-LjFEkzac6y_bdi-2/view?usp=sharing
 
 Presentación:
