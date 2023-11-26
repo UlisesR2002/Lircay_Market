@@ -39,7 +39,7 @@ Diagrama de clases de la base datos:
 
 Presentación:
 
-https://youtu.be/xWArnRx8A0g
+[https://youtu.be/xWArnRx8A0g](https://youtu.be/6Ci5dwfPf5k)https://youtu.be/6Ci5dwfPf5k
 
 
 
