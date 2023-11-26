@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Lircay Market</string>
+
+    <!-- LoginActivity -->
+    <string name="welcome_text">Welcome</string>
+    <string name="image_descrition">Lircay Market Logo</string>
+    <string name="email_text">Email</string>
+    <string name="password_text">Password</string>
+    <string name="login_buttom_text">Log In</string>
+    <string name="without_account_text">Don\'t have an account?</string>
+    <string name="register_buttom_text">Register</string>
+    <string name="user_not_found_error">User not found</string>
+
+    <!-- RegisterActivity -->
+    <string name="username_text">Username</string>
+    <string name="create_account_text">Create Account</string>
+    <string name="repeat_password_text">Repeat Password</string>
+    <string name="create_account_buttom_text">Create Account</string>
+    <string name="empty_username_error">Username is empty</string>
+    <string name="empty_email_error">Email is empty</string>
+    <string name="empty_password_error">Password is empty</string>
+    <string name="repeat_password_error">Passwords do not match</string>
+    <string name="email_used_error">This email is already in use</string>
+
+    <!-- MainActivity -->
+    <string name="welcome_user_text">Welcome </string>
+    <string name="optioncard1_title_text">Pantry List</string>
+    <string name="optioncard2_title_text">Shopping List</string>
+    <string name="optioncard3_title_text">Movement History</string>
+    <string name="optioncard1_description_text">Access your personal pantry list</string>
+    <string name="optioncard2_description_text">Access your personal shopping list and calculate your expenses</string>
+    <string name="optioncard3_description_text">Access the history of your recent movements</string>
+    <string name="optioncard1_button_text">Open Pantry List</string>
+    <string name="optioncard2_button_text">Open Shopping List</string>
+    <string name="optioncard3_button_text">Open Movement History</string>
+
+    <!-- PantryListActivity/ShoppingListActivity-->
+    <string name="product_category_text">Category: </string>
+    <string name="product_decription_text">Description: </string>
+    <string name="product_amount_text">Quantity: </string>
+    <string name="product_price_text">Price: </string>
+    <string name="add_product_pantry_button_text">Add product to pantry</string>
+    <string name="add_product_shoppinglist_button_text">Add product</string>
+    <string name="add_marketlist_button_text">Add stores to the list</string>
+
+    <string name="name_product_text">Name</string>
+    <string name="category_product_text">Category</string>
+    <string name="description_product_text">Description</string>
+    <string name="amount_product_text">Quantity</string>
+    <string name="price_product_text">Price</string>
+    <string name="total_price_text">Total Price: $</string>
+    <string name="check_product_text">Item purchased</string>
+
+    <string name="edit_descripcion_text">Button to edit a product</string>
+    <string name="delete_descripcion_text">Button to delete a product</string>
+
+    <string name="save_button">Save</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="borrar_button">Delete</string>
+    <string name="empty_category_error">Category is empty</string>
+    <string name="empty_description_error">Description is empty</string>
+    <string name="empty_amount_error">Quantity is empty</string>
+    <string name="under_0_amount_error">Enter a quantity greater than 0</string>
+    <string name="empty_price_error">Price is empty</string>
+    <string name="under_0_price_error">Enter a price greater than 0</string>
+
+    <!-- MovementListActivity-->
+    <string name="create_in_pantry">was created in pantry</string>
+    <string name="update_in_pantry">was updated in pantry</string>
+    <string name="delete_in_pantry">was deleted in pantry</string>
+    <string name="create_in_shoppinglist">was created in shopping list</string>
+    <string name="update_in_shoppinglist">was updated in shopping list</string>
+    <string name="delete_in_shoppinglist">was deleted in shopping list</string>
+
+    <!-- OptionCard / OptionContainer-->
+    <string name="Card_title">Activity Name</string>
+    <string name="Card_description">Activity Description</string>
+    <string name="Card_button">Activity Button</string>
+</resources>

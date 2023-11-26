@@ -50,7 +50,7 @@
     <string name="description_product_text">Descripcion</string>
     <string name="amount_product_text">Cantidad</string>
     <string name="price_product_text">Precio</string>
-    <string name="total_price_text">Precio total:</string>
+    <string name="total_price_text">Precio total: $</string>
     <string name="check_product_text">Articulo comprado</string>
 
     <string name="edit_descripcion_text">Boton para editar un producto</string>
@@ -67,11 +67,14 @@
     <string name="empty_price_error">No existe una precio</string>
     <string name="under_0_price_error">Ingrese un precio mayor a 0</string>
 
-    <!-- MarketListActivity-->
-    <string name="type_hint">Tipo: </string>
-    <string name="direction_hint">Direccion: </string>
-    <string name="empty_type_error">No existe un tipo</string>
-    <string name="empty_direction_error">No existe una direccion</string>
+    <!-- MovementListActivity-->
+    <string name="create_in_pantry">fue creado en despensa</string>
+    <string name="update_in_pantry">fue modificado en despensa</string>
+    <string name="delete_in_pantry">fue eliminado en despensa</string>
+    <string name="create_in_shoppinglist">fue creado en lista de compra</string>
+    <string name="update_in_shoppinglist">fue modificado en lista de compra</string>
+    <string name="delete_in_shoppinglist">fue eliminado en lista de compra</string>
+
 
     <!-- OptionCard / OptionContainer-->
     <string name="Card_title">Nombre de la actividad</string>

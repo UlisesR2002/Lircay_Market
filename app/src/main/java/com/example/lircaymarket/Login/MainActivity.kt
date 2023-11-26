@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.lircaymarket.MovementListActivity
 import com.example.lircaymarket.entity.SaveData
 import com.example.lircaymarket.PantryListActivity
 import com.example.lircaymarket.R
@@ -84,7 +85,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         optioncard3View.findViewById<TextView>(R.id.cardButtonNavigate).setOnClickListener{ view ->
-
+            goMovementApp(view)
         }
 
 
@@ -100,6 +101,12 @@ class MainActivity : AppCompatActivity() {
         val intentShoppingList = Intent(this, ShoppingListActivity::class.java)
         intentShoppingList.putExtra("userid",user.userid)
         startActivity(intentShoppingList)
+    }
+
+    fun goMovementApp(view: View){
+        val intentMovementList = Intent(this, MovementListActivity::class.java)
+        intentMovementList.putExtra("userid",user.userid)
+        startActivity(intentMovementList)
     }
 
 }

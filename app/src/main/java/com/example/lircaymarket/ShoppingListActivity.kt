@@ -88,8 +88,7 @@ class ShoppingListActivity : AppCompatActivity(), ProductEditListener {
 
             //Calcula el precio
             totalprice = products.sumBy { it.productprice * it.productamount }
-            totatpricetext.setText("Precio total: \n$" + totalprice)
-
+            totatpricetext.text = "${resources.getString(R.string.total_price_text)} ${totalprice}"
         }
 
 
@@ -105,6 +104,7 @@ class ShoppingListActivity : AppCompatActivity(), ProductEditListener {
 
     override fun onEditProduct(productid: Int){
         val intent = Intent(this, ProductShoppingListRegistrationActivity::class.java)
+        intent.putExtra("userid",userid)
         intent.putExtra("productid", productid)
         startActivity(intent)
     }

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.example.lircaymarket.entity.Movement
 import com.example.lircaymarket.entity.SaveData
 import com.example.lircaymarket.entity.Pantry
 import com.example.lircaymarket.entity.Product
@@ -98,16 +99,19 @@ class ProductRegistratationActivity : AppCompatActivity() {
         }else {
             GlobalScope.launch(Dispatchers.IO) {
                 val products = appDatabase.productDao().getAll()
+                val movements = appDatabase.movementDao().getAll()
                 pantry = appDatabase.pantryDao().getPantryByUserID(userid)!!
                 val product = Product(products.size + 1, name, amount.toInt(), description, category, 0,pantry.pantryid, null)
+                val movement = Movement(movements.size + 1, userid, product.productname, 1)
                 appDatabase.productDao().insertAll(product)
+                appDatabase.movementDao().insertAll(movement)
                 println(product)
             }
             finish()
         }
     }
 
-    fun onEditProduct(){
+    fun onEditProduct() {
         val appDatabase = SaveData.getDatabase(applicationContext)
         val name = nameText.text.toString()
         val category = categoryText.text.toString()
@@ -115,7 +119,6 @@ class ProductRegistratationActivity : AppCompatActivity() {
         val amount = amountText.text.toString()
 
         GlobalScope.launch(Dispatchers.IO) {
-
             editProduct?.let { product ->
                 val updatedProduct = product.copy(
                     productname = name,
@@ -126,14 +129,19 @@ class ProductRegistratationActivity : AppCompatActivity() {
 
                 appDatabase.productDao().update(updatedProduct)
             }
+            val movements = appDatabase.movementDao().getAll()
+            val movement = Movement(movements.size + 1, userid, editProduct?.productname, 2)
+            appDatabase.movementDao().insertAll(movement)
         }
-
         finish()
     }
 
     fun onDeleteProduct(){
         val appDatabase = SaveData.getDatabase(applicationContext)
         GlobalScope.launch(Dispatchers.IO) {
+            val movements = appDatabase.movementDao().getAll()
+            val movement = Movement(movements.size + 1, userid, editProduct?.productname, 3)
+            appDatabase.movementDao().insertAll(movement)
             editProduct?.let { appDatabase.productDao().delete(it) }
         }
         finish()

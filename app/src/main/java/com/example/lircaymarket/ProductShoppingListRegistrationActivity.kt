@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.example.lircaymarket.entity.Movement
 import com.example.lircaymarket.entity.SaveData
 import com.example.lircaymarket.entity.Product
 import com.example.lircaymarket.entity.Shoppinglist
@@ -104,9 +105,12 @@ class ProductShoppingListRegistrationActivity : AppCompatActivity() {
         }else {
             GlobalScope.launch(Dispatchers.IO) {
                 val products = appDatabase.productDao().getAll()
+                val movements = appDatabase.movementDao().getAll()
                 shoppinglist = appDatabase.shoppinglistDao().getShoppinglistByUserID(userid)!!
                 val product = Product(products.size + 1, name, amount.toInt(), description, category, price.toInt(),null, shoppinglist.shoppinglistid)
+                val movement = Movement(movements.size + 1, userid, product.productname, 4)
                 appDatabase.productDao().insertAll(product)
+                appDatabase.movementDao().insertAll(movement)
                 println(product)
             }
             finish()
@@ -133,6 +137,9 @@ class ProductShoppingListRegistrationActivity : AppCompatActivity() {
 
                 appDatabase.productDao().update(updatedProduct)
             }
+            val movements = appDatabase.movementDao().getAll()
+            val movement = Movement(movements.size + 1, userid, editProduct?.productname, 5)
+            appDatabase.movementDao().insertAll(movement)
         }
 
         finish()
@@ -141,6 +148,9 @@ class ProductShoppingListRegistrationActivity : AppCompatActivity() {
     fun onDeleteProduct(){
         val appDatabase = SaveData.getDatabase(applicationContext)
         GlobalScope.launch(Dispatchers.IO) {
+            val movements = appDatabase.movementDao().getAll()
+            val movement = Movement(movements.size + 1, userid, editProduct?.productname, 6)
+            appDatabase.movementDao().insertAll(movement)
             editProduct?.let { appDatabase.productDao().delete(it) }
         }
         finish()

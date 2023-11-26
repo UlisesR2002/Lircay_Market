@@ -7,8 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import androidx.lifecycle.LifecycleCoroutineScope
 import com.example.lircaymarket.R
+import com.example.lircaymarket.entity.Movement
 import com.example.lircaymarket.entity.Product
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 interface ProductEditListener {
     fun onEditProduct(productid: Int)
@@ -65,7 +69,6 @@ class ProductShoppingListAdapter(
     val shoppinglistId : Int,
     val editListener: ProductEditListener
 
-//Cambiar pantryID
 ) : ArrayAdapter<Product>(context, resource, products.filter { it.shoppinglistid == shoppinglistId }) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
@@ -99,6 +102,46 @@ class ProductShoppingListAdapter(
         }
         listItemView.setOnClickListener {
             product?.let { editListener.onEditProduct(it.productid) }
+        }
+        return listItemView
+    }
+}
+
+class MovementListAdapter(
+    context: Context,
+    resource: Int,
+    movements: List<Movement>,
+    private val userid: Int,
+    private val lifecycleScope: LifecycleCoroutineScope
+) : ArrayAdapter<Movement>(context, resource, movements.filter { it.userid == userid }) {
+
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+        val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val listItemView = convertView ?: inflater.inflate(R.layout.list_item_movement, null)
+
+        // Obtener el movimiento en la posición actual
+        val movement = getItem(position)
+
+        // Bind patient data to TextViews in the custom layout
+        val movementTextView = listItemView.findViewById<TextView>(R.id.textViewMovement)
+
+        if (movement != null && movement.userid == userid) {
+            // Mostrar el movimiento solo si el userid coincide
+            lifecycleScope.launchWhenCreated {
+                val resources = context.resources
+                val message = when (movement.movementtype) {
+                    1 -> "${movement.productname} ${resources.getString(R.string.create_in_pantry)}"
+                    2 -> "${movement.productname} ${resources.getString(R.string.update_in_pantry)}"
+                    3 -> "${movement.productname} ${resources.getString(R.string.delete_in_pantry)}"
+                    4 -> "${movement.productname} ${resources.getString(R.string.create_in_shoppinglist)}"
+                    5 -> "${movement.productname} ${resources.getString(R.string.update_in_shoppinglist)}"
+                    6 -> "${movement.productname} ${resources.getString(R.string.delete_in_shoppinglist)}"
+                    else -> ""
+                }
+                withContext(Dispatchers.Main) {
+                    movementTextView.text = message
+                }
+            }
         }
         return listItemView
     }

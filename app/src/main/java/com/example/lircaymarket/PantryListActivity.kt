@@ -87,6 +87,7 @@ class PantryListActivity : AppCompatActivity(), ProductEditListener {
     override fun onEditProduct(productid: Int) {
         // Implementa aquí la lógica para abrir la actividad de edición con el ID del producto
         val intent = Intent(this, ProductRegistratationActivity::class.java)
+        intent.putExtra("userid",userid)
         intent.putExtra("productid", productid)
         startActivity(intent)
     }
