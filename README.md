@@ -38,7 +38,7 @@ Diagrama de clases de la base datos:
 
 Ejecutable:
 
-https://drive.google.com/file/d/15ZyjJSxPMvyGgbI-LjFEkzac6y_bdi-2/view?usp=sharing
+[https://drive.google.com/file/d/15ZyjJSxPMvyGgbI-LjFEkzac6y_bdi-2/view?usp=sharing](https://drive.google.com/file/d/1e1sHC5Of_lEc6tHL7qZEGmlR7kKcT5S8/view?usp=sharing)
 
 Presentación:
 
