@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ListView
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.lircaymarket.adapters.ProductEditListener
@@ -58,6 +59,18 @@ class PantryListActivity : AppCompatActivity(), ProductEditListener {
             }
 
         }
+
+        val searchView = findViewById<SearchView>(R.id.searchView)
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                (listViewProducts.adapter as ProductPantryListAdapter).filter.filter(newText)
+                return false
+            }
+        })
     }
 
     override fun onResume() {

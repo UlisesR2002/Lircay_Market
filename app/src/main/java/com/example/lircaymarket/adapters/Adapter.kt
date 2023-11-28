@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Filter
 import android.widget.TextView
 import androidx.lifecycle.LifecycleCoroutineScope
 import com.example.lircaymarket.R
@@ -21,25 +22,25 @@ interface ProductEditListener {
 class ProductPantryListAdapter(
     context: Context,
     resource: Int,
-    products: List<Product>,
+    private var originalProducts: List<Product>,
     private val pantryId: Int,
     private val editListener: ProductEditListener
-) : ArrayAdapter<Product>(context, resource, products.filter { it.pantryid == pantryId }) {
+) : ArrayAdapter<Product>(context, resource, originalProducts.filter { it.pantryid == pantryId }) {
 
+    private var filteredProducts: List<Product> = originalProducts
     @SuppressLint("SetTextI18n")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val listItemView = convertView ?: inflater.inflate(R.layout.list_item_pantry_product, null)
 
         // Get the patient data at the current position
-        val product = getItem(position)
+        val product = filteredProducts[position]
 
         // Bind patient data to TextViews in the custom layout
         val nameTextView = listItemView.findViewById<TextView>(R.id.textViewName)
         val categoryTextView = listItemView.findViewById<TextView>(R.id.textViewCategory)
         val descriptionTextView = listItemView.findViewById<TextView>(R.id.textViewDescription)
         val amountTextView = listItemView.findViewById<TextView>(R.id.textViewAmount)
-
 
         if (product != null && product.pantryid == pantryId) {
             nameTextView.text = product.productname
@@ -59,24 +60,53 @@ class ProductPantryListAdapter(
         }
         return listItemView
     }
+    override fun getCount(): Int {
+        return filteredProducts.size
+    }
+    override fun getItem(position: Int): Product? {
+        return filteredProducts[position]
+    }
+
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val filterResults = FilterResults()
+                if (constraint.isNullOrEmpty()) {
+                    filterResults.values = originalProducts
+                } else {
+                    val filteredList = originalProducts.filter {
+                        it.productname!!.contains(constraint.toString(), true)
+                    }
+                    filterResults.values = filteredList
+                }
+                return filterResults
+            }
+
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                filteredProducts = results?.values as List<Product>
+                notifyDataSetChanged()
+            }
+        }
+    }
 }
 
 
 class ProductShoppingListAdapter(
     context: Context,
     resource: Int,
-    products: List<Product>,
+    private var originalProducts: List<Product>,
     val shoppinglistId : Int,
     val editListener: ProductEditListener
 
-) : ArrayAdapter<Product>(context, resource, products.filter { it.shoppinglistid == shoppinglistId }) {
+) : ArrayAdapter<Product>(context, resource, originalProducts.filter { it.shoppinglistid == shoppinglistId }) {
 
+    private var filteredProducts: List<Product> = originalProducts
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val listItemView = convertView ?: inflater.inflate(R.layout.list_item_shoppinglist_product, null)
 
         // Get the patient data at the current position
-        val product = getItem(position)
+        val product = filteredProducts[position]
 
         // Bind patient data to TextViews in the custom layout
         val nameTextView = listItemView.findViewById<TextView>(R.id.textViewName)
@@ -104,6 +134,36 @@ class ProductShoppingListAdapter(
             product?.let { editListener.onEditProduct(it.productid) }
         }
         return listItemView
+    }
+
+    override fun getCount(): Int {
+        return filteredProducts.size
+    }
+    override fun getItem(position: Int): Product? {
+        return filteredProducts[position]
+    }
+
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val filterResults = FilterResults()
+                if (constraint.isNullOrEmpty()) {
+                    filterResults.values = originalProducts
+                } else {
+                    val filteredList = originalProducts.filter {
+                        it.productname!!.contains(constraint.toString(), true) &&
+                                it.shoppinglistid == shoppinglistId
+                    }
+                    filterResults.values = filteredList
+                }
+                return filterResults
+            }
+
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                filteredProducts = results?.values as List<Product>
+                notifyDataSetChanged()
+            }
+        }
     }
 }
 

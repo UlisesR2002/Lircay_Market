@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ListView
+import android.widget.SearchView
 import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
 import com.example.lircaymarket.adapters.ProductEditListener
@@ -58,13 +59,24 @@ class ShoppingListActivity : AppCompatActivity(), ProductEditListener {
             this // Pasa la instancia de la actividad como listener
         )
         listViewProducts.setOnItemClickListener { _, _, position, _ ->
-            val selectedProduct = (listViewProducts.adapter as ProductPantryListAdapter).getItem(position)
+            val selectedProduct = (listViewProducts.adapter as ProductShoppingListAdapter).getItem(position)
             selectedProduct?.let {
                 onEditProduct(it.productid)
                 finish()
             }
-
         }
+
+        val searchView = findViewById<SearchView>(R.id.searchView)
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                (listViewProducts.adapter as ProductShoppingListAdapter).filter.filter(newText)
+                return false
+            }
+        })
     }
     override fun onResume() {
         super.onResume()
@@ -79,20 +91,16 @@ class ShoppingListActivity : AppCompatActivity(), ProductEditListener {
 
             // Obtener la lista de productos en otro hilo de fondo
             products = withContext(Dispatchers.IO) {
-                //SaveData.getDatabase(applicationContext).productDao().getAll()
                 SaveData.getDatabase(applicationContext).productDao().getProductsByShoppingListId(shoppinglistid)
             }
 
             // Configurar la UI después de obtener los datos.
             setupUI()
 
-            //Calcula el precio
+            // Calcula el precio
             totalprice = products.sumBy { it.productprice * it.productamount }
             totatpricetext.text = "${resources.getString(R.string.total_price_text)} ${totalprice}"
         }
-
-
-
     }
 
     fun goCreateProduct(view: View)

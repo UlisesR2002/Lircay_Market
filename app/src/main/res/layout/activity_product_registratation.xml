@@ -32,12 +32,6 @@
         android:importantForAutofill="no"
         tools:ignore="VisualLintTextFieldSize" />
 
-    <Spinner
-        android:id="@+id/spinnerCategory"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="48dp" />
-
     <EditText
         android:id="@+id/editTextDescription"
         android:layout_width="match_parent"
