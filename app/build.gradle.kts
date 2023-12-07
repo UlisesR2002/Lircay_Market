@@ -102,4 +102,8 @@ dependencies {
 
     // optional - Paging 3 Integration
     implementation("androidx.room:room-paging:$roomVersion")
+
+    //API REST Request
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.2")
 }
